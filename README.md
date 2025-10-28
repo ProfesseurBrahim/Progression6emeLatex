@@ -1,1 +1,0 @@
-# Progression6emeLatex
