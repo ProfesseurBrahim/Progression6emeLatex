@@ -1,0 +1,3273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Progression de Mathématiques 6e</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   /* Fond général de la page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background: linear-gradient(to right, #dbe4f0, #c8d2e4);
+  color: #1a1a1a;
+}
+
+/* Titre */
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 40px;
+  font-size: 26px;
+  border: 2px solid #8dbbe6;
+  border-radius: 10px;
+  background-color: #eef6ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+      
+/* Accordéons */
+.accordion {
+  position: relative;
+  background-color: #dbeeff;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 14px 20px;
+  width: 100%;
+  border: 1px solid #8dbbe6;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease;
+}
+.accordion:hover { background-color: #c1e0ff; }
+.accordion .arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.3s ease;
+  font-size: 16px;
+}
+.accordion.active .arrow { transform: translateY(-50%) rotate(90deg); }
+
+
+/* Bouton accordéon version rouge */
+.accordion.red {
+  background-color: #ffd6d6;
+  border: 1px solid #e6aaaa;
+}
+
+.accordion.red:hover {
+  background-color: #ffc0c0;
+}
+
+
+/* Liens dans les boutons d'accordéon en noir */
+.accordion a,
+.accordion a:visited {
+  color: #1a1a1a;
+  text-decoration: underline;
+}
+.accordion a:hover,
+.accordion a:focus {
+  color: #1a1a1a;
+  text-decoration: underline;
+}
+      
+/* Panneaux */
+.panel {
+  display: none;
+  padding: 0;
+  background-color: transparent;
+  border: 0px solid #ccc;
+  border-top: none;
+  margin-bottom: 20px;
+  border-radius: 0 0 0px 0px;
+  overflow-x: auto;
+}
+
+
+
+.accordion.violet {
+  background-color: #eadcff;
+  border: 1px solid #c7b3ec;
+}
+.accordion.violet:hover {
+  background-color: #dbc9ff;
+}
+
+.accordion.green {
+  background-color: #d4f8d4;
+  border: 1px solid #a5e0a5;
+}
+.accordion.green:hover {
+  background-color: #bff0bf;
+}
+
+.accordion a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
+}
+  
+.accordion.white {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  color: #333;
+}
+.accordion.white:hover {
+  background-color: #e9e9e9;
+}
+
+.accordion.white2 {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 7px 10px;
+  font-size: 14px;
+}
+.accordion.white2:hover {
+  background-color: #e9e9e9;
+}	    
+
+.accordion.multicolor {
+  background: linear-gradient(90deg, #f44336, #ff9800, #ffeb3b, #4caf50, #2196f3, #9c27b0);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+.accordion.multicolor:hover {
+  filter: brightness(1.1);
+}
+
+.num-circle {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 900;
+  color: black;
+  margin-right: 8px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #f44336, #ff9800, #ffeb3b, #4caf50, #2196f3, #9c27b0);
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+
+
+
+/* Bouton en haut à droite */
+#dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #444;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+#dark-mode-toggle:hover {
+  background: #222;
+}
+
+/* Mode nuit */
+body.dark-mode {
+  background: #121212 !important;  /* remplace le dégradé clair */
+}
+
+#close-accordions-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #444;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1000;
+}
+#close-accordions-button:hover {
+  background: #222;
+}	  
+
+
+.mental-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cartes fixes */
+  gap: 12px;
+  margin-top: 1px;
+}
+
+.mental-card {
+  background: #fff;
+  border: 1px solid #c8d2e4;
+  border-radius: 10px;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.mental-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mental-card small {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.mental-card a {
+  background: #8dbbe6;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.3s;
+}
+
+.mental-card a:hover {
+  background: #6ba5d8;
+}
+
+
+#mental-panel {
+  background: transparent !important;
+border: none;
+}
+
+/* === STYLE CARTES POUR LES SEQUENCES === */
+.sequence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.sequence-card {
+  background: #fff;
+  border: 1px solid #c8d2e4;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+.sequence-card:hover { transform: translateY(-3px); }
+
+.sequence-card2 {
+  background: #6050dc;
+  border: 1px solid #c8d2e4;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+.sequence-card2:hover { transform: translateY(-3px); }	  
+
+.sequence-card h3 {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0;
+  color: #1a1a1a;
+}
+.sequence-card small {
+  font-size: 0.85rem;
+  color: #1a1a1a;
+}
+.sequence-card p {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0;
+}
+.sequence-card a {
+  align-self: flex-start;
+  background: #8dbbe6;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.sequence-card a:hover { background: #6ba5d8; }
+
+.sequence-card2 h3 {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.sequence-card2 a {
+  align-self: flex-start;
+  background: #8dbbe6;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.sequence-card2 a:hover { background: #6ba5d8; }	  
+
+/* Mini accordéon pour Compétences / Exemples */
+.mini-accordion {
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  padding: 2px 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 0.9rem;  
+  margin-top: 2px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mini-accordion:hover { background-color: #f5f5f5; }
+.mini-accordion .arrow { float: right; transition: transform 0.3s ease; }
+.mini-accordion.active .arrow { transform: rotate(90deg); }
+
+.mini-panel {
+  display: none;
+  padding: 8px 10px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 0 0 6px 6px;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+/* --------- Liens d'activités (DOCUMENT) --------- */
+.sequence-links { margin-top: 2px; }
+.sequence-links a {
+  position: relative;
+  display: block;
+  background: #8dbbe6;
+  color: white;
+  padding: 6px 10px 6px 34px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.sequence-links a:hover { background: #6ba5d8; }
+.sequence-links a::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+.sequence-links a.no-icon::before { display: none; }
+
+/* --------- Liens YouTube --------- */
+.sequence-linksYT a {
+  position: relative;
+  display: block;
+  background: #FFA07A;
+  color: white;
+  padding: 6px 10px 6px 42px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.sequence-linksYT a:hover { background: #FA8072; }
+.sequence-linksYT a::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16'%3E%3Crect x='0' y='0' width='24' height='16' rx='3' ry='3' fill='%23FF0000'/%3E%3Cpolygon points='10,4 16,8 10,12' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* --------- Liens Exercices --------- */
+.sequence-linksEXE a {
+  position: relative;
+  display: block;
+  background: #6FCF97;
+  color: white;
+  padding: 6px 10px 6px 34px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.sequence-linksEXE a:hover { background: #57C47F; }
+.sequence-linksEXE a::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="8" width="2" height="8"/><rect x="4" y="7" width="2" height="10"/><rect x="6" y="10" width="12" height="4"/><rect x="18" y="7" width="2" height="10"/><rect x="20" y="8" width="2" height="8"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="8" width="2" height="8"/><rect x="4" y="7" width="2" height="10"/><rect x="6" y="10" width="12" height="4"/><rect x="18" y="7" width="2" height="10"/><rect x="20" y="8" width="2" height="8"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+/* --------- Liens Évaluations --------- */
+.sequence-linksEVAL { 
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4px;	
+}
+      
+.sequence-linksEVAL a {
+  position: relative;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  padding: 6px 10px 6px 42px;
+  background: linear-gradient(90deg,
+    rgba(229,57,53,0.82) 0%,
+    rgba(251,140,0,0.82) 50%,
+    rgba(67,160,71,0.82) 100%
+  ) !important;
+  transition: background 0.25s ease;
+}
+.sequence-linksEVAL a:hover {
+  background: linear-gradient(90deg,
+    #c62828 0%,
+    #ef6c00 50%,
+    #2e7d32 100%
+  ) !important;
+}
+.sequence-linksEVAL a::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="18" rx="2" ry="2"/><rect x="9" y="2" width="6" height="4" rx="1" ry="1"/><rect x="8" y="9" width="8" height="2"/><rect x="8" y="13" width="8" height="2"/><rect x="8" y="17" width="8" height="2"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="18" rx="2" ry="2"/><rect x="9" y="2" width="6" height="4" rx="1" ry="1"/><rect x="8" y="9" width="8" height="2"/><rect x="8" y="13" width="8" height="2"/><rect x="8" y="17" width="8" height="2"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+
+.sequence-linksEVALV { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  justify-content: center;   /* centre la grille */
+  max-width: 900px;
+  margin: 0 auto 4px auto;   /* centre horizontalement */
+}
+      
+.sequence-linksEVALV a {
+  position: relative;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  padding: 6px 10px 6px 72px;
+  background: linear-gradient(90deg,
+    rgba(229,57,53,0.82) 0%,
+    rgba(251,140,0,0.82) 50%,
+    rgba(67,160,71,0.82) 100%
+  ) !important;
+  transition: background 0.25s ease;
+}
+.sequence-linksEVALV a:hover {
+  background: linear-gradient(90deg,
+    #c62828 0%,
+    #ef6c00 50%,
+    #2e7d32 100%
+  ) !important;
+}
+.sequence-linksEVALV a::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="18" rx="2" ry="2"/><rect x="9" y="2" width="6" height="4" rx="1" ry="1"/><rect x="8" y="9" width="8" height="2"/><rect x="8" y="13" width="8" height="2"/><rect x="8" y="17" width="8" height="2"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="18" rx="2" ry="2"/><rect x="9" y="2" width="6" height="4" rx="1" ry="1"/><rect x="8" y="9" width="8" height="2"/><rect x="8" y="13" width="8" height="2"/><rect x="8" y="17" width="8" height="2"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+	  
+/* Layout responsive des blocs de liens */
+.sequence-links,
+.sequence-linksYT,
+.sequence-linksEXE {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+.sequence-links a,
+.sequence-linksYT a,
+.sequence-linksEXE a {
+  text-align: center;
+}
+
+#title-container {
+  display: flex;
+  justify-content: center;   /* centre l’ensemble */
+  align-items: flex-start;   /* aligne en haut */
+  gap: 20px;                 /* espace entre les deux cadres */
+  flex-wrap: wrap;           /* permet retour à la ligne sur petits écrans */
+  margin-bottom: 40px;
+}
+
+#title-container h1 {
+  margin: 0;
+  flex: 0 1 800px;           /* garde la largeur max du h1 */
+}
+
+.small-link-box {
+  font-size: 16px;
+  padding: 6px 12px;
+  border: 2px solid #8dbbe6;
+  border-radius: 8px;
+  background-color: #eef6ff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.small-link-box:hover {
+  background-color: #dbeeff;
+}
+
+
+.sequence-linksCours { 
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+      
+.sequence-linksCours a {
+  position: relative;
+  display: block;
+  background: #8dbbe6;
+  color: white;
+  padding: 6px 10px 6px 34px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+  text-align: center;
+}
+.sequence-linksCours a:hover { background: #6ba5d8; }
+.sequence-linksCours a::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+.sequence-linksCours a.no-icon::before { display: none; }
+
+
+
+
+
+
+
+
+
+.sequence-linksActG { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  justify-content: center;   /* centre la grille */
+  max-width: 900px;
+  margin: 0 auto 4px auto;   /* centre horizontalement */
+}
+      
+.sequence-linksActG a {
+  position: relative;
+  display: block;
+  background: #8dbbe6;
+  color: white;
+  padding: 6px 10px 6px 34px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+  text-align: center;
+}
+.sequence-linksActG a:hover { background: #6ba5d8; }
+.sequence-linksActG a::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+.sequence-linksCours a.no-icon::before { display: none; }
+
+
+
+
+
+.sequence-linksActPA { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  justify-content: center;   /* centre la grille */
+  max-width: 900px;
+  margin: 0 auto 4px auto;   /* centre horizontalement */
+}
+      
+.sequence-linksActPA a {
+  position: relative;
+  display: block;
+  background: #EE82EE;
+  color: white;
+  padding: 6px 10px 6px 34px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+  text-align: center;
+}
+.sequence-linksActPA a:hover { background: #9400D3; }
+.sequence-linksActPA a::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 4l4 4h-4V4zM8 9h6v2H8V9zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+	  
+	  
+	  
+.sequence-linksEXG { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  justify-content: center;   /* centre la grille */
+  max-width: 900px;
+  margin: 0 auto 4px auto;   /* centre horizontalement */
+}
+      
+.sequence-linksEXG a {
+   position: relative;
+  display: block;
+  background: #6FCF97;
+  color: white;
+  padding: 6px 10px 6px 34px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+	  text-align: center;
+}
+.sequence-linksEXE a:hover { background: #57C47F; }
+.sequence-linksEXE a::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="8" width="2" height="8"/><rect x="4" y="7" width="2" height="10"/><rect x="6" y="10" width="12" height="4"/><rect x="18" y="7" width="2" height="10"/><rect x="20" y="8" width="2" height="8"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="8" width="2" height="8"/><rect x="4" y="7" width="2" height="10"/><rect x="6" y="10" width="12" height="4"/><rect x="18" y="7" width="2" height="10"/><rect x="20" y="8" width="2" height="8"/></svg>') no-repeat center/contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+.sequence-linksCours a.no-icon::before { display: none; }
+
+
+
+
+
+/* Le conteneur reste le même; on réserve juste de la place à droite */
+.sequence-linksEVAL { position: relative; }
+.sequence-linksEVAL a:first-of-type { padding-right: 130px; }
+
+/* Bouton "Correction" uniquement : vert, sans icône, sans padding pour logo */
+.sequence-linksEVAL a.correction-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  background: #6FCF97 !important;  /* vert uni pour le bouton */
+  color: #fff !important;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #57C47F;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  white-space: nowrap;
+  z-index: 2;
+  /* neutralise le padding gauche prévu pour l’icône globale */
+  padding-left: 12px !important;
+}
+
+/* Survol du bouton Correction */
+.sequence-linksEVAL a.correction-btn:hover {
+  background: #57C47F !important;
+}
+
+/* Supprimer l’icône uniquement pour le bouton Correction */
+.sequence-linksEVAL a.correction-btn::before {
+  display: none !important;
+  content: none !important;
+}	  
+
+
+
+
+
+
+
+
+
+
+
+
+/* === Fond ciel bleu pour le mode jour === */
+body {
+  background: linear-gradient(to bottom, #aee1f9 0%, #ffffff 100%);
+  position: relative;
+}
+
+/* Ciel étoilé (affiché uniquement en mode nuit) */
+body.dark-mode {
+  background: #000;
+  position: relative;
+}
+
+/* Conteneur du ciel étoilé */
+#star-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  display: none; /* caché par défaut */
+}
+
+/* Actif uniquement en mode nuit */
+body.dark-mode #star-background {
+  display: block;
+}
+
+/* Petites étoiles scintillantes */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* Étoiles filantes */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(45deg, white, rgba(255,255,255,0));
+  opacity: 0.7;
+  transform: rotate(45deg);
+  animation: shoot 1.5s linear forwards;
+}
+
+@keyframes shoot {
+  from { transform: translate(0,0) rotate(45deg); opacity: 1; }
+  to { transform: translate(300px,300px) rotate(45deg); opacity: 0; }
+}
+
+
+
+
+
+
+	  
+/* === Nuages version réaliste === */
+.cloud {
+  position: fixed;
+  top: calc(5% + 15vh * var(--i));
+  left: -250px;
+  width: var(--w, 180px);
+  height: var(--h, 80px);
+  background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.9), rgba(255,255,255,0.6) 70%);
+  border-radius: 50%;
+  box-shadow:
+    60px 10px 0 10px rgba(255,255,255,0.7),
+    120px 20px 0 20px rgba(255,255,255,0.6),
+    180px 0px 0 15px rgba(255,255,255,0.5);
+  opacity: 0.9;
+  filter: blur(1px);
+  animation: floatClouds var(--speed, 90s) linear infinite;
+  z-index: -1;
+  display: none; /* visible seulement en mode jour */
+}
+
+body:not(.dark-mode) .cloud {
+  display: block;
+}
+
+/* Animation du déplacement horizontal */
+@keyframes floatClouds {
+  0% {
+    transform: translateX(0) scale(var(--scale, 1));
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vw) scale(var(--scale, 1));
+    opacity: 0.8;
+  }
+}
+
+	  
+
+
+.cloud {
+  animation: floatClouds var(--speed, 90s) linear infinite,
+             cloudDrift 6s ease-in-out infinite alternate;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateY(0) scale(var(--scale, 1)); }
+  100% { transform: translateY(10px) scale(var(--scale, 1)); }
+}
+
+	  
+	  
+
+
+#fifth-grade-button {
+  position: fixed;
+  top: 20px;
+  left: 160px; /* juste à droite du bouton "Fermer tout" */
+  background: #444;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+#fifth-grade-button:hover {
+  background: #222;
+}
+
+	  
+  </style>
+
+<link rel="icon" type="image/png" href="LogoMichelet.png">
+	
+</head>
+<body>
+	
+<button id="close-accordions-button">▶️ Fermer tout</button>
+
+<a id="fifth-grade-button" 
+   href="https://professeurbrahim.github.io/Progression5eme/" 
+   target="_blank">5ème</a>    	
+	
+<button id="dark-mode-toggle">🌙 Mode nuit</button>
+	
+<div id="title-container">
+  <h1>Mathématiques - Sixième<br><small><a href="Autre/Progression 6ème 2025-2026.pdf" target="_blank">Progression</a> du collège Michelet de Creil 2025-2026</small> <br><small>Monsieur Brahim</small> </h1>
+</div>
+
+<!-- Séance 0 -->
+<button class="accordion white2">
+    Séance 0 : introduction de l'année
+  <span class="arrow">&#9654;</span>
+</button>
+	
+<div class="panel">
+	<div class="sequence-grid">
+    	<!-- Carte 1 -->
+		<div class="sequence-card">
+      <h3>Règles et organisation</h3>
+        <div class="sequence-links">
+        <a href="Rentrée/Accueil des élèves.pdf" target="_blank">Accueil des élèves</a>
+        <a href="Rentrée/Gestion des écrits.pdf" target="_blank">Gestion des écrits</a> 
+      </div>
+		</div>
+		<!-- Carte 2 -->
+		<div class="sequence-card">
+      <h3>Questionnaire</h3>
+        <div class="sequence-links">
+        <a href="Rentrée/Questionnaire des élèves.pdf" target="_blank">Questionnaire des élèves</a>
+        </div>
+		</div>	
+
+		<!-- Carte 3 -->
+		<div class="sequence-card">
+      <h3>Evaluations nationales</h3>
+        <div class="sequence-links">
+        <a href="Rentrée/sujet-automatismes-6eme-2024.pdf" target="_blank">Automatismes</a>
+        <a href="Rentrée/sujet-resolution-de-problemes-6eme-2024.pdf" target="_blank">Problèmes</a> 
+      </div>
+		</div>
+
+		<!-- Carte 4 -->	
+		<div class="sequence-card">
+      <h3>Activité de rentrée et devoirs</h3>
+        <div class="sequence-links">
+        <a href="Rentrée/activité rentrée opérations entiers.pdf" target="_blank">Activité n°1</a>
+		<a href="Rentrée/Devoirs premier cours.pdf" target="_blank">Devoirs premier cours</a>
+      </div>
+		</div>	
+			
+      </div>
+	</div>	
+
+
+
+<!-- Séquence transversale : Calcul mental -->
+<button class="accordion multicolor">
+  <a href="#" target="_blank">
+    Calcul mental et automatismes
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel" id="mental-panel">
+  <div class="mental-grid">
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">1</span><div><strong> Tables de multiplication </strong> <br><small> Jusqu'à la table de 12 </small> </div></div><a href="CalculMental/1 - Tables de multplication.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">2</span><div><strong> Complément à 10, 100, 1 000… </strong><br></div></div><a href="CalculMental/2 - Complément à 10,100,1000....pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">3</span><div><strong> Doubles et moitiés de nombres entiers</strong><br></div></div><a href="CalculMental/3 - Doubles et moitiés de nombres entiers.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">4</span><div><strong> Sommes et différences</strong><br> <small> Par un nombre terminant par 8 ou 9 </small>  </div></div><a href="CalculMental/4 - Ajouter ou retrancher un nombre terminant par 8 ou 9.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">5</span><div><strong> Quadruples et quarts de nombres entiers</strong><br></div></div><a href="CalculMental/5 - Quadruples et quarts de nombres entiers.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">6</span><div><strong> Multiplier ou diviser par 5</strong><br></div></div><a href="CalculMental/6 - Multiplier ou diviser par 5.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">7</span><div><strong> Critère de divisibilité par 3</strong><br></div></div><a href="CalculMental/7 - Critère de divisibilité par 3.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">8</span><div><strong> Critère de divisibilité par 9</strong><br></div></div><a href="CalculMental/8 - Critère de divisibilité par 9.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">9</span><div><strong> Conversions de durées </strong><br></div></div><a href="CalculMental/9 - Conversions de durées.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">10</span><div><strong> Multiplier par 11   </strong><br></div></div><a href="CalculMental/10 - Multiplier par 11.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">11</span><div><strong> Multiplier par 8 </strong><br></div></div><a href="CalculMental/11 - Multiplier par 8.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">12</span><div><strong> Multiplier par 25  </strong><br></div></div><a href="CalculMental/12 - Multiplier par 25.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">13</span><div><strong> Numération décimale   </strong><br></div></div><a href="CalculMental/13 - Numération décimale.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">14</span><div><strong> Fractions et nombres décimaux   </strong><br></div></div><a href="CalculMental/14 - Fractions décimales et nombres décimaux.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">15</span><div><strong> Multiplier par 9   </strong><br></div></div><a href="CalculMental/15 - Multiplier par 9.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">16</span><div><strong> Les diviseurs de 360, 180 et 90    </strong><br></div></div><a href="CalculMental/16 - Les diviseurs de 360, 180 et 90.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">17</span><div><strong> Multiplier par 15        </strong><br></div></div><a href="CalculMental/17 - Multiplier par 15.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">18</span><div><strong> Priorités opératoires   </strong><br><small> Sans parenthèses </small></div></div><a href="CalculMental/18 - Priorités opératoires (sans parenthèses).pdf" target="_blank">Exemples</a></div> 
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">19</span><div><strong> Priorités opératoires  </strong><br><small> Avec parenthèses </small></div></div><a href="CalculMental/19 - Priorités opératoires (avec parenthèses).pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">20</span><div><strong> Complément à 1        </strong><br></div></div><a href="CalculMental/20 - Complément à 1.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">21</span><div><strong> Multiplier par 10, 100 ou 1 000   </strong><br></div></div><a href="CalculMental/21 - Multiplier par 10, 100 ou 1000.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">22</span><div><strong> Diviser par 10, 100 ou 1 000    </strong><br></div></div><a href="CalculMental/22 - Diviser par 10, 100 ou 1000.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">23</span><div><strong> Multiplier par 0,1 ou 0,01 ou 0,001    </strong><br></div></div><a href="CalculMental/23 - Multiplier par 0.1, 0.01, 0.001.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">24</span><div><strong> Conversions  </strong><br><small> De longueur, masse et capacité </small></div></div><a href="CalculMental/24 - Conversions.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">25</span><div><strong> Arrondi d’un nombre       </strong><br></div></div><a href="CalculMental/25 - Arrondi d'un nombre.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">26</span><div><strong> Doubles et moitiés de nombres décimaux  </strong><br></div></div><a href="CalculMental/26 - Doubles et moitiés de nombres décimaux.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">27</span><div><strong> Diviser par 125      </strong><br></div></div><a href="CalculMental/27 - Diviser par 125.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">28</span><div><strong> Egalités de quotients  </strong><br></div></div><a href="CalculMental/28 - Egalités de quotients.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">29</span><div><strong> Multiplier par 1/2 ou par 1/4 ou par 1/5   </strong><br></div></div><a href="CalculMental/29 - Multiplier par 1 2 ou par 1 4 ou par 1 5.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">30</span><div><strong> Calcul de périmètres    </strong><br></div></div><a href="CalculMental/30 - Calcul de périmètres.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">31</span><div><strong> Conversions     </strong><br> <small> D'unités d’aire </small></div></div><a href="CalculMental/31 -Conversions (unités d'aire).pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">32</span><div><strong> Calcul d’aires         </strong><br></div></div><a href="CalculMental/32 - Calcul d'aires.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">33</span><div><strong> Multiplier par 0,5 ou par 0,25 ou par 0,2   </strong><br></div></div><a href="CalculMental/33 - Multiplier par 0.5 ou par 0.25 ou par 0.2.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">34</span><div><strong> Multiplier par 1,5        </strong><br></div></div><a href="CalculMental/34 - Multiplier par 1.5.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">35</span><div><strong> Tableaux de proportionnalité      </strong><br></div></div><a href="CalculMental/35 - Tableaux de proportionnalité.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">36</span><div><strong> Pourcentages simples </strong><br><small> 50%,25%,20%,10%,5%,1% </small></div></div><a href="CalculMental/36 - Pourcentages simples.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">37</span><div><strong> Pourcentage d’un nombre </strong><br></div></div><a href="CalculMental/37 - Pourcentage d'un nombre.pdf" target="_blank">Exemples</a></div>
+      <div class="mental-card"><div class="mental-card-header"><span class="num-circle">38</span><div><strong> Conversions </strong><br><small> D'unités de volume </small></div></div><a href="CalculMental/38 - Conversions (unités de volume).pdf" target="_blank">Exemples</a></div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Séquence 1 -->
+<button class="accordion">
+  <a href="Cours/Chapitre 1 - Les nombres entiers.pdf" target="_blank">
+    Séquence 1 : Nombres entiers
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+	<div class="sequence-linksCours">
+        <a href="Cours/Chapitre 1 - Les nombres entiers.pdf" target="_blank">Cours</a>
+      </div>
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Numération jusqu’à milliard</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">• Connaitre des grands nombres entiers.</div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">• Les principes de la numération décimale de position sont étendus à la classe des milliards.</div>
+
+      <div class="sequence-links">
+        <a href="Activités/S1/Activité 1 - Tableau de numération.pdf" target="_blank">Tableau de numération</a>
+      </div>
+
+        <div class="sequence-linksYT">
+        <a href="https://www.youtube.com/watch?v=NYD4iynRWMA&list=PLVUDmbpupCaoCaqvyj8RGx07Ak0HSjOHi&index=2">Vidéo</a>
+		<a href="https://www.youtube.com/watch?v=icGHAYyXaE4&list=PLVUDmbpupCaoCaqvyj8RGx07Ak0HSjOHi&index=3">Vidéo</a>
+      </div>
+
+      <div class="sequence-linksEXE">
+        <a href="Exercices/S1/Exercices - Numération jusqu’à milliard.pdf" target="_blank">Exercices</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Décomposition et différentes écritures</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">• Connaître et utiliser la valeur des chiffres selon leur rang.<br>• Connaître les liens entre unités de numération.</div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">• Dans 1,27, l’élève identifie le chiffre des centièmes qu'il distingue du nombre de centièmes.</div>
+
+      <div class="sequence-links">
+        <a href="Activités/S1/Activité 3 - Décomposition 1.pdf" target="_blank">Décomposition 1</a>
+        <a href="Activités/S1/Activité 4 - Décomposition 2.pdf" target="_blank">Décomposition 2</a>
+      </div>
+
+	<div class="sequence-linksEXE">
+        <a href="Exercices/S1/Exercices - Ecriture et décomposition.pdf" target="_blank">Exercices</a>
+      </div>
+		
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Demi-droite graduée et abscisse entière</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">• Placer sur une demi-droite graduée un point dont l’abscisse est un nombre entier.<br>• Repérer un nombre entier sur une demi-droite graduée.</div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">• La graduation de la demi-droite est adaptée aux nombres proposés.</div>
+
+      <div class="sequence-links">
+        <a href="Activités/S1/Activité 5 - Chauve souris.pdf">Chauve souris</a>
+      </div>
+
+		<div class="sequence-linksEXE">
+        <a href="Exercices/S1/Exercices - Comparer des nombres entiers.pdf" target="_blank">Exercices comparaison</a>
+		<a href="Exercices/S1/Exercices - droite graduée 2.pdf" target="_blank">Exercices droite graduée</a>
+      </div>
+		
+    </div>
+
+	
+
+  </div>
+
+	<div class="sequence-linksEXG">
+        <a href="Exercices/S1/Exercices - Synthèse.pdf" target="_blank">Exercices - Synthèse</a>
+    </div>
+
+	<div class="sequence-linksActG">
+        <a href="Activités/S1/Activité - Différents systèmes de numération.pdf" target="_blank">TAPI - Différents systèmes de numération</a>
+		<a href="Activités/S1/Activité - Différents systèmes de numération2.pdf" target="_blank">TAPI - Différents systèmes de numération 2</a>
+    </div>
+
+	<div class="sequence-linksActPA">
+		<a href="Activités/S1/Activité - Pixel Art Salamèche.pdf" target="_blank">Pixel Art Salamèche</a>
+		<a href="Activités/S1/Activité - Pixel Art Carapuce.pdf" target="_blank">Pixel Art Carapuce</a>
+		<a href="Activités/S1/Pixel Art - Dracaufeu.pdf" target="_blank">Pixel Art Dracaufeu</a>
+    </div>
+
+	<div class="sequence-linksActPA">
+		<a href="Activités/S1/Pixel Art - Renne.pdf" target="_blank">Pixel Art Renne</a>
+		<a href="Activités/S1/Pixel Art - Oiseau.pdf" target="_blank">Pixel Art Oiseau</a>
+		<a href="Activités/S1/Pixel Art - Bonhomme de neige.pdf" target="_blank">Pixel Art Bonhomme de neige</a>
+    </div>
+	
+	<div class="sequence-linksEVAL">
+        <a href="Evaluations/S1/Chapitre 1 - Les nombres entiers - Evaluation.pdf" target="_blank">Evaluation de fin de chapitre formative</a>
+		<a class="correction-btn"href="Evaluations/S1/Correction évaluation 1.pdf" target="_blank" title="Voir la correction"> Correction </a>
+    </div>
+
+	<div class="sequence-linksEVAL">
+        <a href="Evaluations/S1/Chapitre 1 - Les nombres entiers - Evaluation finale.pdf" target="_blank">Evaluation de fin de chapitre sommative</a>
+		<a class="correction-btn"href="Evaluations/S1/Chapitre 1 - Les nombres entiers - Evaluation finale corrigé.pdf" target="_blank" title="Voir la correction"> Correction </a>
+    </div>
+	
+</div>
+
+
+
+
+
+
+
+
+	
+    <!-- Séquence 2 -->
+<button class="accordion red">
+  <a href="Cours/Chapitre 2 - Distances et médiatrices.pdf">
+    Séquence 2 : Distances et médiatrices
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+	<div class="sequence-linksCours">
+        <a href="Cours/Chapitre 2 - Distances et médiatrices.pdf" target="_blank">Cours</a>
+      </div>
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Distances</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Utiliser le vocabulaire géométrique approprié.<br>
+        • Utiliser les outils usuels (règle, équerre, compas).<br>
+        • Connaitre les notations et les codes usuels.<br>
+        • Reconnaitre et utiliser la perpendicularité et le parallélisme.<br>
+        • Tracer à la règle et à l’équerre des droites, segments, perpendiculaires et parallèles.<br>
+		• Connaitre et utiliser la définition de la distance entre deux points.<br>
+        • Connaitre et utiliser la définition du milieu d’un segment.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève utilise à bon escient : point, droite, segment, demi-droite, milieu…<br>
+        • Il sait reconnaître droites perpendiculaires, parallèles, angle droit, aigu, obtus.<br>
+        • Il connaît les symboles ⊥ ; // ; ∈ ; ∉ et sait utiliser les codages géométriques.<br>
+	    • Exemple : trace une perpendiculaire passant par A extérieur à (d). <br>
+		• La distance entre deux points A et B est définie comme la longueur du segment [AB]. Elle est notée AB.<br>
+        • L’élève admet que le plus court chemin pour aller de A à B est le segment [AB].<br>
+        • Il en déduit que, pour tout point C, AC + CB ⩾ AB, l’égalité étant réalisée pour tous les points appartenant au segment [AB], et uniquement pour eux.<br>
+        • L’élève reporte une distance, compare deux distances à l’aide d’un compas ou d’une règle graduée.<br>
+        • L’élève connait la définition du milieu d’un segment et s’appuie sur elle pour le construire selon les outils dont il dispose : pliage, guide âne, règle graduée, compas, etc.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S2/Activité 1 - billard (perpendiculaires).pdf" target="_blank" >Billard</a>
+		<a href="Activités/S2/Activité 2 - Poséidon et Ulysse.pdf" target="_blank" >Poséidon et Ulysse</a>
+		<a href="Activités/S2/Flashcards - Figures téléphonées - 6°.pdf" target="_blank" >Figures téléphonées</a>
+      </div>
+
+	<div class="sequence-linksEXE">
+        <a href="Exercices/S2/Chapitre 2 - Distances et médiatrices Exercices  n°1.pdf" target="_blank">Exercices n°1</a>
+		<a href="Exercices/S2/Chapitre 2 - Distances et médiatrices Exercices  n°2.pdf" target="_blank">Exercices n°2</a>
+      </div>
+		
+    </div>
+
+	<!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Médiatrices</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre la définition de la médiatrice d’un segment.<br>
+        • Comprendre et utiliser la propriété caractéristique de la médiatrice d’un segment.<br>
+        • Résoudre des problèmes en s’appuyant sur la propriété caractéristique de la médiatrice.  
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • La médiatrice d’un segment est définie comme la droite perpendiculaire au segment passant par son milieu.<br>
+        • L’élève observe, puis admet, que la médiatrice est un axe de symétrie du segment.Il construit la médiatrice d’un segment par pliage. <br>
+        • Il observe alors que, si un point est sur la médiatrice d’un segment, alors il est équidistant de ses extrémités. <br>
+        • L’élève observe également que, si un point n’est pas sur la médiatrice d’un segment, alors il est plus proche de l’une des extrémités que de l’autre. <br>
+        • Il admet que, si un point est à égale distance des extrémités d’un segment, alors il appartient à la médiatrice de ce segment.<br>
+        • L’élève connait la propriété caractéristique de la médiatrice d’un segment qu’il verbalise sous la forme : « la médiatrice d’un segment est l’ensemble des points équidistants des extrémités de ce segment ». Il l’utilise pour justifier la construction de la médiatrice à l’aide d’un compas et d’une règle non graduée.<br>
+        • Par exemple, l’élève place le milieu d’une corde d’un cercle de centre connu à l’équerre et justifie sa construction.<br>
+        • Par exemple, il détermine le centre inconnu d’un cercle en utilisant les médiatrices et verbalise son raisonnement.
+	  </div>
+
+      <div class="sequence-links"><a href="Activités/S2/Activité - Découverte médiatrice.pdf" target="_blank">Découverte</a><a href="Activités/S2/Activité - Construction médiatrice.pdf" target="_blank">Constructions</a><a href="Activités/S2/Activité - Propriété de la médiatrice.pdf" target="_blank">Propriété</a></div>
+
+		<div class="sequence-linksEXE">
+        <a href="Exercices/S2/Chapitre 2 - Distances et médiatrices Exercices n°3.pdf" target="_blank">Exercices n°3</a>
+      </div>
+
+		
+    </div>
+
+	 </div> 
+
+<div class="sequence-linksActG">
+        <a href="https://www-irem.univ-paris13.fr/site_spip/spip.php?article1263" target="_blank">Crayon-papier de l'IREM</a>
+    </div>
+
+
+	<div class="sequence-linksEVALV">
+        <a href="Evaluations/S2/Chapitre 2 - Distance et médiatrice - Evaluation 1A.pdf" target="_blank">Evaluation n°1 - A</a>
+        <a href="Evaluations/S2/Chapitre 2 - Distance et médiatrice - Evaluation 1B.pdf" target="_blank">Evaluation n°1 - B</a>
+        <a href="Evaluations/S2/Chapitre 2 - Distance et médiatrice - Evaluation 1R.pdf" target="_blank">Evaluation n°1 - R</a>
+    </div>
+	
+	 </div> 
+	
+
+<!-- Séquence 3 -->
+<button class="accordion">
+  <a href="Cours/Chapitre 3 - Les nombres décimaux.pdf" target="_blank">  
+    Séquence 3 : Nombres décimaux
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+	<div class="sequence-linksCours">
+        <a href="Cours/Chapitre 3 - Les nombres décimaux.pdf" target="_blank">Cours</a>
+      </div>
+  <div class="sequence-grid">
+
+	  	   <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Définition et décompositions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Reconnaitre un nombre décimal.<br>
+        • Associer et utiliser différentes écritures d’un nombre décimal : écriture à virgule, fraction, nombre mixte.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Un nombre décimal est un nombre qui peut s’écrire sous forme d’une fraction dont le numérateur est un nombre entier et dont le dénominateur est égal à 1, 10, 100, 1 000, etc.<br>
+        • L’élève sait qu’un nombre entier est un nombre décimal. Par exemple, il remarque que 2 = 2,0 et que 2 = 20/10 = 2/1.<br>
+        • L’élève sait qu’un même nombre admet plusieurs écritures. Dans le cadre d’une fraction supérieure à 1, il utilise l’écriture sous forme de nombre mixte, somme d’un nombre entier et d’une fraction inférieure à 1.<br>
+        • L’élève est sensibilisé au choix d’une ou de plusieurs écritures adaptées à une situation donnée, que ce soit dans le cadre d’une opération à effectuer ou d’un problème à résoudre.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S3/Activité - L'histoire de la virgule.pdf">Histoire de la virgule</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Abscisse décimale d'un point</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Placer sur une demi-droite graduée un point dont l’abscisse est un nombre décimal.<br>
+        • Repérer un nombre décimal sur une demi-droite graduée.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • La graduation de la demi-droite est adaptée aux nombres proposés.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S3/Activité - Nombres décimaux (demi-droite et classement).pdf">Zeus</a>
+      </div>
+    </div>
+
+   
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Comparer et ranger des nombres décimaux</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Comparer deux nombres décimaux.<br>
+        • Ordonner une liste de nombres décimaux.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Les signes d’inégalités larges ⩽ et ⩾ sont introduits à cette occasion.<br>
+        • L’élève justifie les procédures utilisées pour comparer ou ranger des nombres décimaux en s’appuyant sur la signification de leur écriture décimale ou sur le placement des points associés sur une demi-droite graduée.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S3/Activité - Nombres décimaux (demi-droite et classement).pdf">Cerbere</a>
+      </div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="sequence-card">
+      <h3>Encadrer un nombre décimal</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Donner la valeur arrondie à l’unité, au dixième, ou au centième d’un nombre décimal.<br>
+        • Déterminer ou connaitre la valeur arrondie de certains nombres non décimaux.<br>
+        • Encadrer un nombre décimal par deux nombres décimaux, intercaler un nombre décimal entre deux nombres décimaux.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • En lien avec la division décimale posée l’élève comprend par exemple, que 1/3 n’est pas un nombre décimal et que 0,33 en est la valeur arrondie au centième.<br>
+        • L’élève justifie les procédures utilisées pour encadrer ou intercaler des nombres décimaux en s’appuyant sur la signification de leur écriture décimale ou sur le placement des points associés sur une demi-droite graduée.
+      </div>
+
+		<div class="sequence-links">
+        <a href="Activités/S3/Activité - Grille décimale.pdf">Grille décimale</a>
+      </div>
+		
+
+    </div>
+
+  </div>
+
+
+	<div class="sequence-linksEXG">
+        <a href="Exercices/S3/Chapitre 3 - Les nombres décimaux - Exercices.pdf" target="_blank">Fiche d'exercices en classe</a>
+        <a href="Exercices/S3/Chapitre 3 - Les nombres décimaux - Exercices Maison.pdf" target="_blank">Fiche d'exercices à la maison</a>
+    </div>
+
+	<div class="sequence-linksActG">
+        <a href="Activités/S3/Activité - Decitri.pdf" target="_blank">Jeu Decitri</a>
+		<a href="Activités/S3/Activité - Crack the code #1 .pdf" target="_blank">Crack the code</a>
+    </div>
+
+	<div class="sequence-linksActPA">
+        <a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_1_.pdf" target="_blank">Pixel Art Lion</a>
+		<a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_2_.pdf" target="_blank">Pixel Art Souris</a>
+		<a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_3_.pdf" target="_blank">Pixel Art Ours</a>
+    </div>
+
+	<div class="sequence-linksActPA">
+        <a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_4_.pdf" target="_blank">Pixel Art HP</a>
+		<a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_5_.pdf" target="_blank">Pixel Art Yoda</a>
+		<a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_6_.pdf" target="_blank">Pixel Art Poule</a>
+    </div>
+
+
+	<div class="sequence-linksActPA">
+        <a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_7_.pdf" target="_blank">Pixel Art Thanos</a>
+		<a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_8_.pdf" target="_blank">Pixel Art Cochon</a>
+		<a href="Activités/S3/Chapitre_3___Les_nombres_décimaux__Pixel_Art_9_.pdf" target="_blank">Pixel Art Tortue</a>
+    </div>
+
+	
+    </div>
+
+</div>
+
+    
+
+<!-- Séquence 4 -->
+<button class="accordion red">
+  <a href="Cours/Chapitre 4 - Espace et volumes.pdf" target="_blank">  
+    Séquence 4 : Espace et volumes
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+	<div class="sequence-linksCours">
+        <a href="Cours/Chapitre 3 - Les nombres décimaux.pdf" target="_blank">Cours</a>
+      </div>
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Les solides / Le centimètre cube</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre l’unité centimètre cube.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève apprend que le centimètre cube est une unité de volume notée cm³ ; et que 1 cm³ est le volume d’un cube d’arête 1 cm.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S4/Activité - Pavés dans la mare.pdf">Pavés dans la mare (difficile)</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Comparer et déterminer des volumes</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Comparer des volumes.<br>
+        • Déterminer un volume.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève compare le volume de deux solides constitués d’assemblages de cubes identiques.<br>
+        • L’élève détermine le volume d’un assemblage de cubes d’arête 1 cm.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S4/Activité - Compter des volumes.pdf">Compter des volumes</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Visualisation dans l’espace</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Voir dans l’espace des assemblages de cubes.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève interprète différentes représentations planes d’un assemblage de cubes : dessin à main levée, perspective cavalière, patron.<br>
+        • À partir de la manipulation d’un assemblage de cubes ou d’une représentation comme la figure ci-contre, l’élève trace à main levée ou sur du papier quadrillé les différentes vues de cet assemblage : vue de dessus, vue de face, vue de gauche, vue de droite.<br>
+        • Inversement, quatre vues d’un assemblage de cubes lui étant fournies, l’élève choisit parmi les représentations de plusieurs assemblages, celle qui correspond à ces vues.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S4/Activité - Patron et ficelle, cube.pdf">Patron et ficelle</a>
+		<a href="Activités/S4/Activité - vues de cubes.pdf">Vues de cube</a>  
+      </div>
+    </div>
+
+  </div>
+
+	<div class="sequence-linksEXG">
+        <a href="Exercices/S4/Chapitre 4 - Espace et volumes - Exercices.pdf" target="_blank">Fiche d'exercices</a>
+    </div>
+	
+	
+</div>
+
+
+
+
+<!-- Séquence 5 -->
+<button class="accordion ">
+  <a href="https://www.maths-et-tiques.fr/telech/25Operations.pdf" target="_blank">  
+    Séquence 5 : Additions, soustractions et durées
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Somme et différence de nombres décimaux</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Additionner et soustraire des nombres décimaux.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève entretient les connaissances qu’il a acquises au cours moyen et les mobilise dans le cadre de la résolution de problèmes.<br>
+        • Il identifie les opérations à effectuer.<br>
+        • Il s’appuie sur des représentations (ex. : schémas en barres) si nécessaire.<br>
+        • Il effectue des additions et des soustractions en les posant par écrit ou mentalement, selon les nombres en jeu.<br>
+        • Il estime a priori le résultat et le contrôle a posteriori.
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S5/pyramides_dessins.pdf" target="_blank">Pyramides</a>
+		<a href="Activités/S5/hexagrilles_1.pdf" target="_blank">Hexagrilles n°1</a>
+		<a href="Activités/S5/hexagrilles_2.pdf" target="_blank">Hexagrilles n°2</a>  
+      </div>
+
+
+		
+    </div>
+
+ <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Calculer une heure ou une durée</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Effectuer des calculs sur des horaires et des durées.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Par exemple, l’élève résout un problème du type : D’après les informations ci-dessous :<br>
+        ► quel est le numéro du prochain bus ?<br>
+        ► dans combien de temps arrivera-t-il ?<br>
+        ► un ami te prévient qu’il te rejoindra dans 12 minutes. Pourrez-vous prendre ensemble le bus 303 ?
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S5/Connaitre et utiliser les durées.pdf" target="_blank">Eduscol</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Convertir des durées</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Convertir des durées.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait répondre à des questions du type : « Combien font 609 h en semaines, jours et heures ? » ; « Combien font 34 990 s en heures, minutes et secondes ? » ; « Est-il plus long d’emprunter de l’argent à la banque sur 76 mois ou sur 5 ans ? ». <br>
+        L’élève sait que :<br>
+        ► 0,5 h = 1/2h = 30 min ; 0,25 h = 1/4h = 15 min ;<br>
+        ► 0,75 h = 3/4h = 45 min ; 0,1 h = 1/10h = 6 min.<br>
+        • L’élève connait les écritures sexagésimale et décimale d’une durée. Dans le cadre de la résolution de problèmes, il passe de l’une à l’autre.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+   
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Séquence 6 -->
+<button class="accordion violet">
+  <a href="https://www.maths-et-tiques.fr/telech/25Tab_Graph.pdf" target="_blank">  
+    Séquence 6 : Angles
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Définition et vocabulaire</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre et utiliser les angles ainsi que le lexique et les notations qui s’y rapportent : angle droit, angle plat, angle plein, angle nul, angle aigu, angle obtus, angles opposés par le sommet, angles adjacents, angles supplémentaires.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Deux demi-droites de même origine définissent deux secteurs angulaires, qu’on assimile à des angles : un angle saillant et un angle rentrant, ou deux angles plats. Hormis l’angle plein et l’angle plat, le programme se limite aux angles saillants. <br>
+            • La notion mathématique d’angle peut être illustrée par l’ouverture d’un éventail, le déplacement de l’aiguille d’une horloge par rapport à une position fixe ou l’ouverture d’un compas. <br>
+            • L’élève verbalise et utilise la notation adaptée pour désigner chacun des objets suivants : sommet, côté, demi-droites qui délimitent un angle. <br>
+            • Il utilise les notations : ∠ABC, Â, ∠xOy.<br>
+            • Il compare des angles par superposition ou à l’aide d’un gabarit. Il sait déterminer si deux angles sont égaux. Il sait reproduire un angle donné en utilisant un gabarit. <br>
+            • L’élève sait que deux droites sécantes se coupent en formant quatre angles saillants qui constituent deux paires d’angles opposés par le sommet. À l’aide d’un gabarit ou d’un rapporteur, il constate que deux angles opposés par le sommet sont de même mesure. Il admet et connait cette propriété. L’élève sait que, si deux droites sécantes se coupent en formant quatre angles égaux, alors les angles obtenus sont des angles droits. <br>
+            • Par exemple, il fabrique un angle droit à l’aide d’une feuille de papier pliée en quatre. Il illustre les liens entre angle droit, angle plat et angle plein, à l’aide de cette feuille de papier.<br>
+            • L’élève connait la définition des angles adjacents et celle des angles supplémentaires.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Le rapporteur</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Mesurer un angle.<br>
+        • Construire un angle de mesure donnée.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève connait les mesures en degrés de l’angle droit et de l’angle plat. Il en déduit que l’angle plein mesure 360° et comprend que l’angle nul mesure 0°. <br>
+            • Par pliage et superposition, l’élève partage l’angle plat en deux, en trois, en quatre ou en six angles deux à deux adjacents et égaux et associe une mesure aux angles obtenus.  <br>
+            • Il connait les mesures des angles de l’équerre qu’il utilise.  <br>
+            • Un angle mesurant 1° peut être obtenu à partir du partage de l’angle plat en 180 angles deux à deux adjacents et égaux.   <br>
+            •  L’élève utilise un rapporteur pour mesurer un angle en degré, pour comparer deux angles, pour construire un angle de mesure donnée en degré. <br>
+            • En lien avec les déplacements, il relie quart de tour à angle droit, demi-tour à angle plat, tour complet à angle plein, et connait les mesures en degrés de chacun de ces angles.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>La bissectrice</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre la définition de la bissectrice d’un angle.<br>
+            • Construire une bissectrice à l’aide du compas.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • La bissectrice d’un angle saillant est définie comme la droite qui partage cet angle en deux angles adjacents égaux.<br>
+            • L’élève observe, puis admet, que la bissectrice d’un angle est l’axe de symétrie de cet angle.<br>
+            • L’élève construit la bissectrice d’un angle par pliage, puis à l’aide d’un 
+rapporteur.<br>
+            • Par exemple, l’élève élabore un programme de construction permettant à un camarade de reproduire la figure représentant une tête d’oiseau.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+    <!-- Carte 4 -->
+    <div class="sequence-card">
+      <h3>Propriétés de la bissectrice</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Utiliser les propriétés de la bissectrice dans une figure géométrique.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait que tout point de la bissectrice est équidistant des côtés de l’angle.<br>
+        • Il utilise cette propriété pour résoudre des problèmes simples de construction ou de justification.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+   
+    <!-- Carte 5 -->
+    <div class="sequence-card">
+      <h3>Lexique et propriétés des angles</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre et utiliser les angles ainsi que le lexique et les notations qui s’y rapportent : angle droit, angle plat, angle plein, angle nul, angle aigu, angle obtus, angles opposés par le sommet, angles adjacents, angles supplémentaires.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Deux demi-droites de même origine définissent deux secteurs angulaires, qu’on assimile à des angles : un angle saillant et un angle rentrant, ou deux angles plats. Hormis l’angle plein et l’angle plat, le programme se limite aux angles saillants. <br>
+        • La notion mathématique d’angle peut être illustrée par l’ouverture d’un éventail, le déplacement de l’aiguille d’une horloge par rapport à une position fixe ou l’ouverture d’un compas. <br>
+        • L’élève verbalise et utilise la notation adaptée pour désigner chacun des objets suivants : sommet, côté, demi-droites qui délimitent un angle. <br>
+        • Il utilise les notations : ∠ABC, Â, ∠xOy.<br>
+        • Il compare des angles par superposition ou à l’aide d’un gabarit. Il sait déterminer si deux angles sont égaux. Il sait reproduire un angle donné en utilisant un gabarit. <br>
+        • L’élève sait que deux droites sécantes se coupent en formant quatre angles saillants qui constituent deux paires d’angles opposés par le sommet. À l’aide d’un gabarit ou d’un rapporteur, il constate que deux angles opposés par le sommet sont de même mesure. Il admet et connait cette propriété. L’élève sait que, si deux droites sécantes se coupent en formant quatre angles égaux, alors les angles obtenus sont des angles droits. <br>
+        • Par exemple, il fabrique un angle droit à l’aide d’une feuille de papier pliée en quatre. Il illustre les liens entre angle droit, angle plat et angle plein, à l’aide de cette feuille de papier.<br>
+        • L’élève connait la définition des angles adjacents et celle des angles supplémentaires.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+	  
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Séquence 7 -->
+<button class="accordion">
+  <a href="https://www.maths-et-tiques.fr/telech/25Fra1.pdf" target="_blank">  
+    Séquence 7 : Fractions n°1
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Fractions et graduations</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Placer une fraction sur une demi-droite graduée dans des cas simples.<br>
+        • Graduer un segment de longueur donnée.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait placer a/b sur une demi-droite graduée en b parts égales.<br>
+        • Il peut, selon la situation, utiliser le pliage d'une bande ou un guide-âne pour créer la graduation.<br>
+        • Il écrit la valeur de chaque graduation sous forme fractionnaire.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+	  <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Égalités de fractions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Établir des égalités de fractions.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait justifier que 7/3 = 14/6 par des représentations ou des placements sur demi-droites graduées.<br>
+        • Le résultat est institutionnalisé sous la forme « Le nombre représenté par une fraction ne change pas quand on multiplie ou quand on divise le numérateur et le dénominateur de celle-ci par un même nombre non nul ». <br>
+        • Il complète des égalités du type : 2/3 = .../9 ou 4/7 = 28/...<br>
+        • Il identifie les fractions égales à 7/4 parmi une liste.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Comparer, encadrer et ordonner des fractions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Comparer et encadrer des fractions.<br>
+        • Ordonner des fractions ou nombres mixtes.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève compare des fractions de même dénominateur ou de même numérateur.<br>
+        • Il compare des fractions à 1 et utilise ce moyen pour comparer certaines fractions comme, par exemple, 7/8 et 10/9.<br>
+        • Il compare certaines fractions à 1/2 comme, par exemple 5/12 et 6/11.<br>
+        • Il encadre une fraction entre deux entiers consécutifs.<br>
+        • Il sait ranger des fractions comme 5/3, 1, 7/6, 99/100, 1 + 1/3 dans l'ordre croissant.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+	
+
+
+
+<!-- Séquence 8 -->
+<button class="accordion green">
+  <a href="https://www.maths-et-tiques.fr/telech/25Tab_Graph.pdf" target="_blank"> 
+    Séquence 8 : Gestion de données
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Planifier une enquête et recueillir des données</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Planifier une enquête et recueillir des données.<br>
+        • Réaliser des mesures et les consigner dans un tableau.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève mène seul, en binôme, ou à l’intérieur d’un groupe plus large, une enquête statistique portant sur la répartition d’un caractère dans une population. Pour cela, il définit la population à étudier, élabore un questionnaire et recueille les données, qu’il met éventuellement en commun avec ses camarades avant de les compiler dans un tableau.<br>
+        • L’élève réalise des mesures destinées à étudier l’évolution d’une grandeur en fonction d’une autre. Il consigne les résultats dans un tableau, puis les représente dans un repère par un ensemble de points. Il adapte le choix de l’origine et d’une graduation de chacun des axes aux mesures.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Construire un tableau simple</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Construire un tableau simple pour présenter des données (observations, caractères).
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Par exemple, l’élève construit un tableau en colonnes pour organiser les informations contenues dans le texte suivant, en précisant le titre de chaque colonne. « Des élèves ont relevé des températures et des taux d’hygrométrie dans la cour du collège à différentes heures d’une journée. À 8 h, il faisait 12 °C et il y avait 75 % d’humidité dans l’air ; à 10 h, la température était de 18 °C et le taux d’hygrométrie de 61 % ; à 12 h, la température était de 24 °C et le taux d’hygrométrie de 43 %, et enfin à 16 h, la température était de 22 °C et le taux d’hygrométrie de 42 %. »
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Filtrer des données selon un critère</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Faire un choix en filtrant les données d’un tableau selon un critère.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        <!-- Aucun exemple précisé dans ton tableau d'origine -->
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+	
+
+	
+<!-- Séquence 9 -->
+<button class="accordion ">
+  <a href="https://www.maths-et-tiques.fr/telech/25Operations.pdf" target="_blank">  
+    Séquence 9 : Multiplications
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Produit par une puissance de 0,1, 0,01 et 0,001</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Multiplier un nombre entier ou un nombre décimal par 0,1, par 0,01 et par 0,001.<br>
+        • Connaitre le lien entre multiplication par 0,1 / 0,01 / 0,001 et division par 10 / 100 / 1 000.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait que multiplier un nombre par 0,1 revient à en prendre le dixième, en lien avec les fractions et les conversions d’unités.<br>
+        • Il constate que multiplier un nombre décimal par 0,1 donne un résultat dix fois plus petit que le nombre initial.<br>
+        • Il comprend que « multiplier » ne signifie pas toujours « rendre plus grand ».<br>
+        • L’élève verbalise que « multiplier par 0,1, c’est diviser par 10 », etc.<br>
+        • Il mémorise les égalités telles que :<br>
+        &nbsp;&nbsp;10 × 0,1 = 1 ; 0,1 × 0,1 = 0,01 ; 0,1 × 0,01 = 0,001.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Produits de décimaux et ordres de grandeurs</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Comprendre le sens de la multiplication de deux nombres décimaux.<br>
+        • Calculer le produit de deux nombres décimaux.<br>
+        • Contrôler les résultats à l’aide d’ordres de grandeur.<br>
+        • Résoudre des problèmes mettant en jeu des multiplications entre des nombres décimaux.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Le sens de la multiplication est illustré à partir de situations géométriques (ex. : aire d’un rectangle). Par exemple, la multiplication de 3,7 par 2,9, est illustrée par le calcul de l’aire d’un rectangle de 3,7 dm de longueur et 2,9 dm de largeur. L’élève convertit ces dimensions en centimètre. Le produit des deux entiers 37 et 29, qui est la mesure de l’aire en cm² est ensuite convertie en dm² et fournit le résultat de la multiplication de 3,7 par 2,9.<br>
+        • L’élève contrôle systématiquement le résultat obtenu à l’aide d’un ordre de grandeur. Ainsi, il sait a priori que le produit 3,7 × 2,9 est proche de 4 × 3 = 12 (ou qu’il est de l’ordre de 10), ce qu’il vérifie a posteriori. La référence à l’aire du rectangle permet de justifier que 3,7 × 2,9 = 2,9 × 3,7. La propriété de commutativité est généralisée au produit de tous les décimaux. Pour automatiser la connaissance de cette procédure l’élève calcule tout autant des produits du type 8,2 × 0,01 que du type 0,01 × 8,2.<br>
+        • Une fois que ce sens de la multiplication, qui sort du cadre d’une addition itérée, est compris par l’élève, celui-ci effectue des multiplications qui peuvent mobiliser les propriétés d’associativité et de commutativité. Sans en citer le nom, le professeur les explicite comme, par exemple pour les calculs suivants :<br>
+        ► 0,4 × 3 = (0,1 × 4) × 3 = 0,1 × (4 × 3) = 0,1 × 12 = 1,2<br>
+        ► 0,4 × 0,3 = (0,1 × 4) × (0,1 × 3) = 0,1 × 4 × 0,1 × 3 = 0,1 × 0,1 × 4 × 3 = (0,1 × 0,1) × (3 × 4) = 0,01 × 12 = 0,12<br>
+        • Il est essentiel que l’automatisation du positionnement de la virgule dans le résultat d’une multiplication soit précédée par ce type de décompositions.<br>
+        • Lors de la résolution d’un problème dont l’objectif est de travailler le sens de la multiplication et non pas sa technique, ou dans le cas de calculs chronophages, l’élève peut, selon ses besoins, disposer d’une calculatrice. 
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Séquence 10 -->
+<button class="accordion red">
+  <a href="https://www.maths-et-tiques.fr/telech/25Sym_axe.pdf" target="_blank">  
+    Séquence 10 : Symétrie axiale
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte unique -->
+    <div class="sequence-card">
+      <h3>Symétrie axiale</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre la définition du symétrique d’un point par rapport à une droite. <br>
+        • Connaitre et utiliser les propriétés de la symétrie axiale pour effectuer des constructions. 
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Étant donnés une droite (d) et un point M n’appartenant pas à (d), l’élève sait que le symétrique de M par rapport à (d) est le point M’ tel que (d) est la médiatrice du segment [MM’]. <br>
+        • Il sait également que, si le point M appartient à (d), alors il est son propre symétrique. <br>
+        • L’élève sait que si M’ est le symétrique de M, alors M est le symétrique de M’.<br>
+        • L’élève constate par pliage la conservation des distances par une symétrie axiale, avant d’admettre et d’utiliser cette propriété. <br>
+        • Il constate sur des figures la conservation des angles par une symétrie axiale, avant d’admettre et d’utiliser cette propriété. <br>
+        • L’élève sait que le symétrique d’un point est un point, que le symétrique d’une droite (respectivement d’une demi-droite) est une droite (respectivement une demi-droite), que le symétrique d’un segment est un segment de même longueur, que le symétrique d’un angle est un angle de même mesure, que le symétrique d’un cercle est un cercle de même rayon. <br>
+        • L’élève construit le symétrique d’un point ou d’une figure simple en utilisant des instruments et un support imposés (équerre et règle graduée ; équerre et compas ; compas seul ; papier quadrillé ; papier pointé ou papier uni). 
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S11/Activité - Symétrie axiale.pdf">Star Wars</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+	
+
+<!-- Séquence 11 -->
+<button class="accordion">
+  <a href="https://www.maths-et-tiques.fr/telech/25Divisions1.pdf" target="_blank">  
+    Séquence 11 : Divisions
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Division euclidienne</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Effectuer la division euclidienne d’un nombre entier par un entier inférieur à 100.<br>
+        •  Résoudre des problèmes mettant en jeu des divisions euclidiennes.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Au cours moyen, l’élève a appris à effectuer, en la posant, la division euclidienne d’un nombre entier par un nombre entier inférieur à 10. En 6e, le cadre est élargi, à la division euclidienne par un nombre entier inférieur à 100. Lors des différentes étapes de l’algorithme, la verbalisation d’expressions du type « combien de fois peut-on mettre b dans a ? » ou encore « combien de fois a contient-il b ? » permet de conforter le sens « quotition » de la division. Lorsque l’opération est effectuée, l’élève désigne le dividende, le diviseur, le quotient et le reste.<br>
+        • Il sait reconnaître les problèmes relevant de la division euclidienne :<br>
+        &nbsp;&nbsp;- Nombre de verres de 20 cL dans 1,25 L.<br>
+        &nbsp;&nbsp;- Nombre de bouquets de 18 roses à partir de 295 roses.<br>
+        &nbsp;&nbsp;- Nombre de bus de 45 places pour 536 passagers.<br>
+        • Il sait interpréter les résultats obtenus et peut insérer les unités dans la présentation de ses calculs. Par exemple, il peut écrire 295 roses = 16 × 18 roses + 7 roses.  <br>
+        • L’élève fait le lien entre division euclidienne et conversion d’unités de durée (par exemple, transformation de minutes en heures et minutes).  <br>
+        • Il sait utiliser une division euclidienne pour écrire une fraction sous la forme d’un nombre mixte. 
+      </div>
+
+      <div class="sequence-links">
+        <a href="Activités/S10/Activité - Division euclidienne.pdf">Cluedo</a>
+      </div>
+    </div>
+
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Division décimale</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Diviser un nombre décimal par un entier &lt; 10.<br>
+        • Résoudre des problèmes mettant en jeu des divisions décimales.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’algorithme de la division posée, étudié au cours moyen, avec un dividende décimal et un diviseur inférieur à 10, est entretenu. Il était limité au cas où on s’arrête au plus tard au centième avec un reste nul, comme, par exemple, pour effectuer 9 855 ÷ 6 ; 7 854 ÷ 8 ou 986,3 ÷ 5. <br>
+        • En 6e, on élargit ce cadre avec l’objectif de faire comprendre à l’élève deux aspects essentiels liés aux fractions : <br>► lorsque l’algorithme de la division décimale de a par b s’arrête, la fraction a/b est un nombre décimal, par exemple, la division posée 9 855 ÷ 6 dont le résultat est 1 642,5. La fraction 9 855/6  est donc un nombre décimal ;<br>► l’algorithme de certaines divisions posées ne s’arrête jamais, par exemple pour 10 ÷ 3 ou 73 ÷ 6. L’élève comprend que ce résultat est lié au fait que les fractions 10/3 et 73/6 ne sont pas des nombres décimaux.<br>
+        • Le sens de la division comme opération inverse de la multiplication, vu sur les nombres entiers au cours élémentaire, est étendu aux décimaux non entiers. Ainsi, l’élève sait que, pour tout nombre décimal a, et tout nombre entier b non nul : (a ÷ b) × b = a et (a × b) ÷ b = a.<br>
+        • L’élève identifie les situations relevant d’une division : le calcul d’une part ou celui du nombre de parts. Par exemple : <br>► il sait quelle opération poser et il effectue le calcul permettant de déterminer,s’il verse 1,5 L de jus d’orange dans 8 verres de façon équitable, combien de centilitres contiendra chaque verre ; <br>►il sait quelle opération poser et il effectue le calcul permettant de déterminer combien de verres de 20 cL sont contenus dans une bouteille de 1,5 L de jus d’orange. Il interprète le résultat (7 verres et demi) dans le contexte de l’exercice.<br>
+        • Concernant la technique, l’élève a éventuellement recours à la calculatrice dans le cadre de la résolution d’un problème mettant en jeu un diviseur qui est un nombre entier ayant au moins deux chiffres. Par exemple, il peut utiliser une calculatrice pour résoudre l’exercice suivant : Léa a payé 57,40 € pour 35 L d’essence. Quel est le prix d’un litre d’essence ? <br>
+        • En revanche, il sait résoudre sans calculatrice l’exercice suivant : Léo a acheté un coupon de tissu dont le prix est 3 € le mètre. Il a payé 15,60 €. Quelle est la longueur du coupon acheté ?
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+<!-- Séquence 12 -->
+<button class="accordion violet">
+  <a href="https://www.maths-et-tiques.fr/telech/25Perim.pdf" target="_blank">  
+    Séquence 12 : Périmètres et aires
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Périmètre du disque</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Savoir que le périmètre du disque est proportionnel à son diamètre.<br>
+        • Connaitre la formule du périmètre d’un disque.<br>
+        • Calculer le périmètre d’un disque.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève admet que le rapport entre le périmètre et le diamètre est un nombre constant noté π.<br>
+        • Il sait que π n’est pas un nombre décimal, et que 3,14 en est un arrondi.<br>
+        • Il apprend et utilise les formules : P = π × D ; P = 2 × π × R.<br>
+        • Il substitue les longueurs dans les formules pour calculer un périmètre.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Calcul de périmètres composés</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Calculer des périmètres de figures composées.<br>
+        • Résoudre des problèmes impliquant des longueurs.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève calcule le périmètre de figures contenant des cercles ou des portions de cercle.<br>
+        • Il sait résoudre des problèmes comme celui de la piste d’athlétisme mesurant entre 400 m et 402,3 m.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Aire du carré et du rectangle</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre la formule de l’aire d’un carré ou d’un rectangle.<br>
+        • Calculer l’aire d’un carré ou d’un rectangle.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève verbalise que l’aire d’un carré est égale au produit de son côté par lui-même : aire = côté × côté = c × c.<br>
+        • Pour un rectangle, il écrit : aire = longueur × largeur = L × l.<br>
+        • Il effectue des calculs numériques illustrant la commutativité de la multiplication.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="sequence-card">
+      <h3>Conversions d’aires</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Effectuer des conversions d’aire.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait que 1 mm² est l’aire d’un carré de 1 mm de côté et que 1 km² est l’aire d’un carré de 1 km de côté.<br>
+        • L’élève convertit en m² (respectivement en dm²) une aire donnée en dm² (respectivement en cm²) et inversement.<br>
+        • Par exemple, l’élève convertit 3,7 m² en dm² en s’appuyant sur l’égalité 1 m² = 100 dm². Il convertit 370 cm² en dm², en verbalisant que la mesure en dm² est 100 fois plus petite que la mesure en cm², ou que 1 cm² est le centième de 1 dm². Le recours à un tableau de conversion est déconseillé à ce stade de l’apprentissage.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Séquence 13 -->
+<button class="accordion">
+  <a href="https://www.maths-et-tiques.fr/telech/25Fra2.pdf" target="_blank">  
+    Séquence 13 : Fractions n°2
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+	<!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Fraction et division</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Relier une fraction au résultat exact de la division de son numérateur par son dénominateur.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève constate que la fraction a/b est égale au résultat, de la division de l’entier a par l’entier b non nul dans des cas particuliers : <br>► lorsque a est un multiple de b ; <br>► lorsque a ÷ b est un nombre décimal non entier. Par exemple, il sait que 3/4 = 0,75 et constate que 3 ÷ 4 = 0,75 en posant la division décimale de 3 par 4. Il interprète alors la fraction 3/4 comme le quart de 3.<br>
+        • L’élève apprend que, pour tout entier a et tout entier b non nul, la fraction a/b est le résultat exact de la division de a par b.  <br>
+        • Le cas particulier b = 1 est explicité. L’élève sait que a/1= a ÷ 1 = a.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Quotient et égalités</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Comprendre et connaitre la définition du quotient d’un entier a par un entier b non nul.<br>
+        • Compléter des égalités à trou multiplicatives.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève constate que b × a/b = a dans des cas particuliers : <br>► lorsque a est un multiple de b ; <br>► lorsque a/b est un nombre décimal non entier.<br>
+        • L’égalité a/b = a ÷ b et le fait que la multiplication est l’opération inverse de la division permettent d’institutionnaliser le résultat et de le verbaliser sous la forme « Le quotient de a par b est le nombre qui, multiplié par b, donne a ». <br>
+        • La commutativité du produit d’un entier par une fraction, justifiée par son interprétation comme aire d’un rectangle, permet d’écrire b × a/b= a/b × b = a. <br>
+        • L’élève utilise la notion de quotient et la propriété de commutativité pour compléter des égalités à trou des types : b × … = a ; … × b = a, où a est un entier et b un entier non nul. <br>
+        • Il importe de proposer aux élèves des égalités à trou leur permettant de comprendre que, dans certains cas, l’écriture fractionnaire est la seule manière de représenter le nombre manquant. 
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Nature des fractions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Savoir que la fraction a/b peut représenter un nombre entier, un nombre décimal non entier ou un nombre non décimal.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève connait quelques fractions qui représentent des nombres non décimaux.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="sequence-card">
+      <h3> Multiplier une fraction par un nombre </h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Utiliser une multiplication pour appliquer une fraction à un nombre entier.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • En début d’apprentissage, l’élève verbalise des calculs du type : 2/5 de 60, c’est 2 cinquièmes de 60, c’est-à-dire 2 fois un cinquième de 60, c’est-à-dire 2 fois 60/5; ainsi : 2/5× 60 = 2 × 60/5= 2 × 12 = 24.<br>
+        • Le professeur peut, selon des besoins des élèves, faire apparaitre sur des exemples du type précédent que pour a, b, c (non nul), « b/c de a » est égal à (b/c) × a et à a × (b/c) qui est aussi égal à (b × a)/c et à b × (a/c).<br>
+        • Le résultat est institutionnalisé sous la forme : « Pour calculer une fraction d’un nombre entier, on multiplie la fraction par le nombre ».
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+
+	  
+    <!-- Carte 5 -->
+    <div class="sequence-card">
+      <h3>Addition, soustraction et multiplication de fractions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Additionner et soustraire des fractions.<br>
+        • Multiplier une fraction par un nombre entier.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait additionner et soustraire des fractions de même dénominateur ou de dénominateurs multiples l’un de l’autre.<br>
+        • Il sait additionner et soustraire des fractions de dénominateurs quelconques dans des cas simples. Par exemple, il sait calculer : 5/4+2/3 ; 7/2-3/5.<br>
+        • L’élève sait calculer le produit d’une fraction par un nombre entier, et connait sa propriété de commutativité.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 6 -->
+    <div class="sequence-card">
+      <h3>Problèmes avec fractions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Résoudre des problèmes mettant en jeu des fractions.<br>
+        • Inventer des problèmes mettant en jeu des fractions.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Par exemple, l’élève sait résoudre le problème suivant : « Mia a découpé son gâteau d’anniversaire en parts de différentes tailles. Leïla choisit une part égale au quart du gâteau et Léo choisit une part égale au sixième du gâteau. Quelle fraction du gâteau reste-t-il pour les autres invités ? »<br>
+        • Par exemple, l’élève invente un problème dont la résolution nécessite le calcul de 2/5+ 3/10 suivi de la soustraction de son choix.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+	
+
+	
+
+<!-- Séquence 14 -->
+<button class="accordion green">
+  <a href="https://www.maths-et-tiques.fr/telech/25Proportion.pdf" target="_blank">  
+    Séquence 14 : Proportionnalité
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Reconnaitre une situation de proportionnalité</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre la définition de la proportionnalité entre deux grandeurs et la mettre en lien avec des expressions de la vie courante.<br>
+        • Identifier si une situation relève du « modèle » de la proportionnalité.  
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait que deux grandeurs sont proportionnelles si, en multipliant les mesures de l’une par un même nombre (non nul), on obtient les mesures de l’autre.<br>
+        • Il sait que des locutions comme « prix au kilo », « feuilles imprimées par minute » traduisent la proportionnalité.<br>
+        • L’élève est sensibilisé au « modèle » de la proportionnalité :  
+        ► Exemple d’un paquet de gâteaux vendu en promotion ;  
+        ► Exemple du nombre de véhicules franchissant un péage ;  
+        ► Exemple du calcul d’une hauteur en fonction de marches d’escalier.  
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Résoudre un problème de proportionnalité</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Résoudre un problème de proportionnalité en choisissant une procédure adaptée :  
+        propriété de linéarité pour la multiplication ou l’addition, retour à l’unité. 
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait qu’une seule paire de données suffit pour obtenir toutes les autres.<br>
+        • Exemple : problème des pommes de terre vendues au poids (5 € pour 2,5 kg).<br>
+        • L’élève applique la propriété de linéarité additive.<br>
+        • Il mobilise calcul mental et nombres décimaux pour résoudre des problèmes du type :  
+        ► « 10 objets coutent 22 €, combien pour 15 objets ? »  
+        ► « Si 5 kg de pommes coûtent 10,50 €, quel est le prix de 3,5 kg ? ».  
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Représenter une situation de proportionnalité</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Représenter une situation de proportionnalité à l’aide d’un tableau ou de notations symboliques. 
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel"></div>
+
+      <div class="sequence-links">
+        <a href="Activités/S5/Activité - Proportionnalité.pdf">Bilbon</a>
+      </div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="sequence-card">
+      <h3>Problèmes d’échelles</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • S’initier à la résolution de problèmes d’échelles.  
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève verbalise la signification d’une échelle graphique.<br>
+        • Exemple : « 1 cm sur le plan correspond à 10 m en réalité ».<br>
+        • Il utilise une échelle graphique pour déterminer des longueurs réelles sur une carte, un plan ou une image (exemple en SVT).
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+	
+
+<!-- Séquence 14 bis -->
+<button class="accordion green">
+  <a href="https://www.maths-et-tiques.fr/telech/25Pourcent.pdf" target="_blank">  
+    Séquence 14 bis : Pourcentages
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Notion de pourcentage / Pourcentage d'un nombre / Calculer un pourcentage</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre la définition d’un pourcentage.<br>
+        • Associer et utiliser différentes écritures d’un nombre décimal : écriture à virgule, fraction, nombre mixte, pourcentage.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Par définition, si a est un entier naturel, a % est égal à a/100. On se limite à l’utilisation de pourcentages compris entre 0 % et 100 %, qui servent à exprimer des proportions et des probabilités.<br>
+        • L’élève sait qu’un même nombre admet plusieurs écritures. Dans le cadre d’une fraction supérieure à 1, il utilise l’écriture sous forme de nombre mixte, somme d’un nombre entier et d’une fraction inférieure à 1. Par exemple, il sait que : 25 % = 25/100 = 0,25 = 1/4 ; 35 % = 35/100 = 0,35 = 7/20.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Comprendre et appliquer un pourcentage</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Comprendre le sens d’un pourcentage.<br>
+        • Calculer une proportion et l’exprimer sous forme de pourcentage dans des cas simples.<br>
+        • Appliquer un pourcentage à une grandeur ou un nombre.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait que 42 % signifie 42 g pour 100 g, et calcule la masse dans 200 g ou 50 g.<br>
+        • Il exprime une proportion (comme 2 boules blanches sur 10) en pourcentage.<br>
+        • Il déduit qu’un pourcentage est une fraction de dénominateur 100.<br>
+        • L’élève sait que pour appliquer a %, on calcule a/100 × valeur.<br>
+        • Il utilise une échelle de pourcentage pour des cas simples (ex. : 20 % de 60 € = 12 €).<br>
+        • Il comprend que 100 % correspond à la totalité et que la proportion est toujours ≤ 1.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+	
+
+
+	
+<!-- Séquence 15 -->
+<button class="accordion red">
+  <a href="https://www.maths-et-tiques.fr/telech/25Nombres1.pdf" target="_blank">  
+    Séquence 15 : Cercles et triangles
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Cercle et disque comme ensembles de points</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+		• Connaitre les définitions d’un cercle, d’un disque, d’un rayon, d’un diamètre, d’une corde.<br>
+        • Comprendre la définition d’un cercle et celle d’un disque sous la forme d’ensembles de points.
+
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+		• Le cercle est défini comme l’ensemble des points équidistants d’un point appelé centre.<br>
+        • Le disque est défini comme l’ensemble des points situés à une distance inférieure ou égale d’un point donné appelé centre.<br>
+        • L’élève distingue un cercle d’un disque.<br>
+        • Le mot « rayon » désigne indifféremment un segment joignant un point du cercle à son centre et la longueur de ce segment.<br>
+        • Le mot « diamètre » désigne indifféremment un segment joignant deux points du cercle et passant par son centre et la longueur de ce segment.<br>
+        • Une corde est définie comme un segment reliant deux points du cercle.<br>
+        • L’élève sait que le diamètre est le double du rayon et qu’il est supérieur ou égal à la longueur de toutes les cordes.<br>
+        • L’élève sait interpréter géométriquement des égalités et des inégalités de distances à un point.<br>
+        • Il sait que :<br>
+        ► si un point A appartient au cercle de centre O et de rayon 2 cm, alors OA = 2 cm.<br>
+        ► si un point D n’appartient pas au cercle, alors OD ≠ 2 cm.<br>
+        ► si OF ⩽ 2 cm, alors F appartient au disque.<br>
+        ► si OG > 2 cm, alors G n’appartient pas au disque.<br>
+        • L’élève admet que le cercle de centre O et de rayon 2 cm est l’ensemble des points situés à 2 cm de O et que le disque est l’ensemble des points dont la distance à O est ≤ 2 cm.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+	  	  <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Problèmes avec distances</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Résoudre des problèmes mettant en jeu des distances à un point.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        Exemple : l’élève reproduit un schéma à l’échelle (1 cm = 1 m) et détermine la zone où une chèvre peut brouter, attachée à une corde de 8 m.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Les triangles</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Construire des triangles.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève dessine à main levée un triangle en faisant figurer le codage correspondant aux données de l’énoncé.<br>
+            • L’élève construit un triangle connaissant : 
+<br>► les longueurs des trois côtés, lorsque la construction est possible ; 
+<br>► les longueurs de deux côtés et l’angle compris entre ces deux côtés ; 
+<br>► la longueur d’un côté et les deux angles qui lui sont adjacents.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="sequence-card">
+      <h3>Médiatrices du triangle et cercle circonscrit</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        •  Savoir que les médiatrices d’un triangle sont concourantes.  <br>
+        •  Connaitre et construire le cercle circonscrit à un triangle.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève comprend pourquoi les trois médiatrices d’un triangle sont concourantes et il est capable de restituer les arguments de la preuve de ce résultat. <br>
+        • Il en déduit l’existence du cercle circonscrit à un triangle et sait le construire.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+	   <!-- Carte 5 -->
+    <div class="sequence-card">
+      <h3>Triangles et propriétés angulaires</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Construire des triangles.<br>
+        • Connaitre et utiliser les propriétés angulaires des triangles particuliers : triangle rectangle, triangle isocèle, triangle équilatéral.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève dessine à main levée un triangle en faisant figurer le codage correspondant aux données de l’énoncé.<br>
+        • L’élève construit un triangle connaissant : <br>
+        ► les longueurs des trois côtés, lorsque la construction est possible ; <br>
+        ► les longueurs de deux côtés et l’angle compris entre ces deux côtés ; <br>
+        ► la longueur d’un côté et les deux angles qui lui sont adjacents.<br>
+        • L’élève connait et utilise les codes pour les angles droits et pour les égalités d’angles.<br>
+        • Il connait la définition et la caractérisation sous la forme d’égalité d’angles d’un triangle isocèle et d’un triangle équilatéral. 
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+    <!-- Carte 6 -->
+    <div class="sequence-card">
+      <h3>Somme des angles d’un triangle</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Connaitre la valeur de la somme des mesures des angles d’un triangle. <br>
+        • L’utiliser pour calculer des angles, effectuer des constructions et résoudre des problèmes.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève s’appuie sur l’accolement de triangles identiques pour constater que la somme des angles d’un triangle est un angle plat avant d’admettre ce résultat. <br>
+        • L’élève démontre que, dans un triangle équilatéral, chaque angle mesure 60° et il connait ce résultat.<br>
+        • L’élève sait calculer la mesure des trois angles d’un triangle isocèle à partir de l’une d’elles. <br>
+        • Par exemple, l’élève construit un triangle ABC isocèle en A, sachant que AB = 4 cm et BAC ̂=30°. <br>
+        • Par exemple, à l’aide d’instruments géométriques, l’élève reproduit une figure à main levée.
+      </div>
+
+      <div class="sequence-links"><a href="#">Lien à ajouter</a></div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+	
+
+
+<!-- Séquence 16 -->
+<button class="accordion green">
+  <a href="https://www.maths-et-tiques.fr/telech/25Tab_Graph.pdf" target="_blank">  
+    Séquence 16 : Probabilités
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Expérience aléatoire & issues</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        <span style="color: grey;">
+          • Identifier toutes les issues possibles lors d’une expérience aléatoire simple.<br>
+          • Identifier toutes les issues réalisant un évènement dans une expérience aléatoire simple.
+        </span>
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        <span style="color: grey;">
+          • Dans l’expérience qui consiste à tirer une carte dans un jeu de 52 cartes, l’élève sait donner la liste de toutes les issues qui réalisent chacun des évènements suivants :<br>
+          ► « tirer un roi » ;<br>
+          ► « tirer une figure » ;<br>
+          ► « tirer un as rouge » ;<br>
+          ► « tirer le neuf de trèfle ». <br>
+          • Dans l’expérience qui consiste à lancer un dé à six faces, l’élève identifie toutes les issues qui réalisent chacun des évènements suivants :<br>
+          ► « obtenir un nombre pair » ;<br>
+          ► « obtenir un multiple de 3 » ;<br>
+          ► « obtenir un diviseur de 10 ».
+        </span>
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Probabilités (équiprobabilité) & comparaisons</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        <span style="color: grey;">
+          • Dans une situation d’équiprobabilité, lors d’une expérience aléatoire simple, exprimer la probabilité d’un évènement sous la forme « a chances sur b ». <br>
+          • Comparer des probabilités dans des cas simples.
+        </span>
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        <span style="color: grey;">
+          • L’élève sait qu’il y a « une chance sur six » d’obtenir un « 4 » en lançant un dé classique. <br>
+          • L’élève sait qu’il y a autant de chances d’obtenir un « 6 » qu’un « 4 » en lançant un dé classique et que cette probabilité est égale à « une chance sur six ». <br>
+          • L’élève sait dire et justifier qu’il y a « treize chances sur cinquante-deux » d’obtenir un pique en tirant une carte au hasard dans un jeu de 52 cartes et « quatre chances sur cinquante-deux » d’obtenir un as. <br>
+          • L’élève sait dire qu’il y a plus de chances d’obtenir un pique que d’obtenir un as en tirant une carte dans un jeu de 52 cartes. <br>
+          • L’élève sait dire si une probabilité donnée sous la forme « a chances sur b » est supérieure, égale ou inférieure à « une chance sur deux », et justifier sa réponse en comparant a avec la moitié de b. <br>
+          • L’élève sait colorier chacune des billes du sac ci-contre, soit en rouge, soit en vert, de façon à ce qu’il y ait une chance sur deux d’obtenir une bille verte lorsque l’on tire au hasard, sans regarder, une bille du sac.
+        </span>
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Indépendance d’expériences aléatoires</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        <span style="color: grey;">
+          • Comprendre la notion d’indépendance lors de la répétition de la même expérience aléatoire.
+        </span>
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        <span style="color: grey;">
+          • L’élève sait que, lorsqu’il répète une même expérience dans des conditions identiques, les résultats antérieurs n’ont aucune incidence sur la probabilité d’obtenir un résultat donné. Par exemple, il sait que lorsqu’il lance une pièce de monnaie non truquée, s’il a obtenu trois fois « face » lors des trois premiers lancers, alors au quatrième lancer, il y a toujours exactement une chance sur deux qu’il obtienne « face » et une chance sur deux qu’il obtienne « pile ». <br>
+          • L’élève sait résoudre un exercice comme le suivant : « Anissa jette trois fois de suite la même pièce. Elle obtient dans l’ordre les résultats suivants : FACE – PILE – FACE. Elle jette la pièce une quatrième fois. Penses-tu que le quatrième résultat a plus de chances d’être PILE que FACE, a plus de chances d’être FACE que PILE, ou, a autant de chances d’être PILE que FACE ? Explique ta réponse.
+        </span>
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+
+	      <!-- Carte 4 -->
+    <div class="sequence-card">
+      <h3>Quantifier une probabilité</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Savoir que la probabilité d’un évènement est un nombre compris entre 0 et 1.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait positionner un évènement sur une échelle de probabilité graduée de 0 à 1 en interprétant la situation. Par exemple :<br>
+        ► obtenir un 7 en lançant un dé à six faces numérotées de 1 à 6 ;<br>
+        ► obtenir un nombre entier compris entre 1 et 6 inclus en lançant un dé à six faces ;<br>
+        ► obtenir pile en lançant une pièce équilibrée ;<br>
+        ► ne pas obtenir la bonne combinaison au loto ;<br>
+        ► obtenir 10 fois de suite la valeur 1 en lançant un dé à six faces.<br>
+        • L’élève sait que la probabilité d’un évènement impossible vaut 0 et que celle d’un évènement certain vaut 1.<br>
+        • Il fait le lien entre l’expression « une chance sur quatre » employée au cours moyen et la probabilité 1/4 (qui peut se lire 1 sur 4).
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 5 -->
+    <div class="sequence-card">
+      <h3>Calculer des probabilités simples</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Calculer des probabilités dans des situations simples d’équiprobabilité.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève sait qu’une probabilité peut s’exprimer sous la forme d’une fraction, d’un nombre décimal ou d’un pourcentage. Par exemple, il calcule la probabilité d’obtenir une boule noire en piochant au hasard, sans regarder, une boule dans une urne contenant 3 boules noires et 7 boules blanches.<br>
+        • L’élève colorie chacune des billes du sac ci-contre, soit en rouge, soit en bleu, de façon à ce que la probabilité d’obtenir une bille bleue lorsqu’on tire au hasard, sans regarder, une bille du sac, soit égale à 1/4 ou à 25 % ou à 0,25.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 6 -->
+    <div class="sequence-card">
+      <h3>Comparer résultats expérimentaux et probabilités</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Comparer des résultats d’une expérience aléatoire répétée à une probabilité calculée.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève répète une même expérience aléatoire plusieurs fois, dans des conditions similaires, et calcule des proportions. Par exemple, chaque élève de la classe lance 20 fois de suite deux pièces de monnaie et note à chaque lancer le résultat obtenu (qui peut être deux fois FACE, une fois PILE et une fois FACE ou deux fois PILE). Tous les résultats obtenus sont mis en commun afin de calculer la proportion d’apparition de « deux fois PILE » parmi l’ensemble de tous les résultats obtenus. Cette proportion est comparée à la probabilité d’obtenir « deux fois PILE » vue au cours moyen.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Séquence transversale : Initiation à la pensée informatique -->
+<button class="accordion white">
+  <a href="https://pix.fr" target="_blank">
+    Séquence transversale : Initiation à la pensée informatique
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Identifier et exécuter une séquence d’instructions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Identifier une instruction ou une séquence d’instructions.<br>
+        • Produire et exécuter une séquence d’instructions.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève manipule et identifie des instructions selon le contexte choisi : déplacements élémentaires, opérations mathématiques, etc.<br>
+        • L’élève retrouve parmi plusieurs séquences d’instructions qui lui sont fournies, celle qui permet de dessiner un carré.<br>
+        • L’élève dispose de cartes figurant les opérations mathématiques « ajouter 1 », « multiplier par 2 », « multiplier par 3 » : il les ordonne pour réaliser un programme de calcul, par exemple « Multiplier un nombre par 2. Ajouter 1 au résultat. Multiplier par 3 le nouveau résultat. » Il exécute ce programme de calcul à partir d’un nombre donné en entrée et obtient un nombre en sortie.<br>
+        • L’élève interprète le schéma suivant dans lequel les flèches rouges représentent le parcours d’un bus. Il dispose de deux cartes d’instructions « Aller » et « Tourner dans la direction » ainsi que de cartes de lieu et de direction « à la bibliothèque », « à la mairie », « au stade », etc., « Est », « Ouest », etc. Il les ordonne pour retranscrire le parcours du bus en une séquence d’instructions.<br>
+        • À partir du trajet représenté en jaune sur la grille de nombres ci-dessous, l’élève produit une séquence d’instructions permettant de se déplacer selon le trajet imposé et de calculer la somme des nombres inscrits sur les cases par lesquelles il passe.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Répéter une séquence d’instructions</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Répéter à la main une séquence d’instructions pour accomplir une tâche imposée.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève identifie et répète une séquence d’instructions pour obtenir une construction géométrique simple, comme celle d’un carré.<br>
+        • L’élève identifie que l’instruction « multiplier par 2 » permet de passer d’un terme au suivant dans la suite évolutive de nombres : 1 ; 2 ; 4 ; 8 ; 16 ; etc. Il comprend que, pour obtenir le onzième terme de cette suite, il faut répéter 10 fois l’instruction « multiplier par 2 ».
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3>Programmer un chemin simple</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Programmer la construction d’un chemin simple.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • À la suite de la résolution, de manière débranchée c’est-à-dire sans outil numérique, des exercices ci-dessus, l’élève écrit et exécute un programme permettant de dessiner le chemin du bus ou celui du robot.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Séquence transversale : Résoudre des problèmes mettant en jeu des nombres inconnus -->
+<button class="accordion white">
+  <a href="https://pix.fr" target="_blank">
+    Séquence transversale : Résoudre des problèmes mettant en jeu des nombres inconnus
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Utiliser des modèles pré-algébriques</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Utiliser des modèles pré-algébriques pour résoudre des problèmes algébriques.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • En utilisant un schéma en barres pour traduire les relations entre les nombres inconnus, l’élève résout des problèmes comme, par exemple, le suivant :<br>
+        ► Pour la fête d’un village, on organise une course cycliste. Une prime totale de 320€ sera répartie entre les trois premiers coureurs. Le premier touchera la prime d’or, le deuxième la prime d’argent et le troisième la prime de bronze. La prime d’or s’élève à 70€ de plus que la prime d’argent et la prime de bronze à 80€ de moins que la prime d’argent. Quelle est la prime de chacun des trois premiers coureurs ?<br>
+        • L’élève résout des problèmes comme dans l’exemple suivant :<br>
+        ► En utilisant les prix indiqués ci-dessous, déterminer le prix d’une pastèque et celui d’un ananas.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Identifier la structure d’un motif évolutif</h3>
+
+      <button class="mini-accordion">Compétence(s) <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • Identifier la structure d’un motif évolutif en repérant une régularité et en identifiant une structure.
+      </div>
+
+      <button class="mini-accordion">Exemple(s) de réussite <span class="arrow">▶</span></button>
+      <div class="mini-panel">
+        • L’élève résout des problèmes comme, par exemple, le suivant :<br>
+        On fabrique des petites maisons avec des allumettes : Combien faut-il d’allumettes pour réaliser :<br>
+        ► 1 maison ?<br>
+        ► 4 maisons ?<br>
+        ► 25 maisons ?<br>
+        • L’élève identifie une relation entre le nombre de maisons et le nombre d’allumettes, par exemple en organisant ses calculs dans un tableau.
+      </div>
+
+      <div class="sequence-links">
+        <a href="#">Lien à ajouter</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Séquence transversale : Résoudre des problèmes mettant en jeu des nombres inconnus -->
+<button class="accordion white">
+  <a href="https://pix.fr" target="_blank">
+    Ressources annexes : UPE2A
+  </a>
+  <span class="arrow">&#9654;</span>
+</button>
+
+<div class="panel">
+  <div class="sequence-grid">
+
+    <!-- Carte 1 -->
+    <div class="sequence-card">
+      <h3>Evaluations diagnostiques</h3>
+
+      <div class="sequence-links">
+        <a href="UPE2A/Evaluations/Evaluation diagnostique - non verbale.pdf">Non verbale</a>
+        <a href="UPE2A/Evaluations/Evaluation francais.pdf">Francais</a>
+        <a href="UPE2A/Evaluations/Evaluation arabe.pdf">Arabe</a>
+        <a href="UPE2A/Evaluations/Evaluation pachto.pdf">Pachto</a>
+        <a href="UPE2A/Evaluations/Evaluation anglais.pdf">Anglais</a>
+        <a href="UPE2A/Evaluations/Evaluation turc.pdf">Turc</a>
+        <a href="UPE2A/Evaluations/Evaluation albanais.pdf">Albanais</a>
+      </div>
+		
+    </div>
+	  
+
+
+
+	<!-- Carte 2 -->
+    <div class="sequence-card">
+      <h3>Fiches</h3>
+
+      <div class="sequence-links">
+        <a href="UPE2A/Fiches maths UPE2A_6e-5e.pdf">Fiches à l'année 6e-5e</a>
+      </div>
+		
+    </div>
+
+	
+	  
+    <!-- Carte 3 -->
+    <div class="sequence-card">
+      <h3> Jeux </h3>
+
+      <div class="sequence-links">
+        <a href="UPE2A/Fiches maths UPE2A_6e-5e.pdf">Fiches à l'année 6e-5e</a>
+      </div>
+    </div>
+
+  </div>
+    </div>
+	
+</div>
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const accordions = document.querySelectorAll(".accordion");
+    accordions.forEach(button => {
+      button.addEventListener("click", () => {
+        button.classList.toggle("active");
+        const panel = button.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+  });
+</script>
+
+<script>
+  // Empêche l'ouverture de l'accordéon quand on clique sur un lien dans le bouton
+  document.querySelectorAll('.accordion a').forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  });
+</script>
+
+<script>
+  const toggleButton = document.getElementById('dark-mode-toggle');
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    toggleButton.textContent = document.body.classList.contains('dark-mode') 
+      ? '☀️ Mode jour' 
+      : '🌙 Mode nuit';
+  });
+</script>
+
+<script>
+  // Fermer tous les accordéons
+  document.getElementById('close-accordions-button').addEventListener('click', () => {
+    document.querySelectorAll('.accordion').forEach((btn) => {
+      btn.classList.remove('active');
+    });
+    document.querySelectorAll('.panel').forEach((panel) => {
+      panel.style.display = 'none';
+    });
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".mini-accordion").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("active");
+      const panel = btn.nextElementSibling;
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    });
+  });
+});
+</script>
+
+<script>
+// === Bouton "Fermer tout" ===
+document.getElementById("close-accordions-button").addEventListener("click", function () {
+  // Fermer les grands accordéons
+  document.querySelectorAll(".accordion").forEach((acc) => {
+    acc.classList.remove("active");
+    const panel = acc.nextElementSibling;
+    if (panel) panel.style.display = "none";
+  });
+
+  // Fermer les mini-accordéons
+  document.querySelectorAll(".mini-accordion").forEach((btn) => {
+    btn.classList.remove("active");
+    const miniPanel = btn.nextElementSibling;
+    if (miniPanel) miniPanel.style.display = "none";
+  });
+});
+</script>
+
+
+
+
+
+<!-- ☁️ Nuages du mode jour -->
+<div class="cloud" style="--i:1; --w:160px; --h:70px; --speed:80s; --scale:1;"></div>
+<div class="cloud" style="--i:2; --w:220px; --h:90px; --speed:120s; --scale:1.2;"></div>
+<div class="cloud" style="--i:3; --w:280px; --h:100px; --speed:150s; --scale:1.4;"></div>
+<div class="cloud" style="--i:4; --w:130px; --h:60px; --speed:70s; --scale:0.9;"></div>
+<div class="cloud" style="--i:5; --w:250px; --h:110px; --speed:180s; --scale:1.6;"></div>
+
+
+<!-- 🌌 Ciel étoilé du mode nuit -->
+<div id="star-background">
+  <div id="stars"></div>
+  <div id="shooting-stars"></div>
+</div>
+
+<script>
+function createStars(count = 120) {
+  const starsContainer = document.getElementById('stars');
+  starsContainer.innerHTML = '';
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    const size = Math.random() * 2 + 1;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    starsContainer.appendChild(star);
+  }
+}
+
+function createShootingStar() {
+  const container = document.getElementById('shooting-stars');
+  const star = document.createElement('div');
+  star.classList.add('shooting-star');
+  star.style.top = `${Math.random() * 50}%`;
+  star.style.left = `${Math.random() * 80}%`;
+  container.appendChild(star);
+  setTimeout(() => star.remove(), 1500);
+}
+
+function randomShootingStars() {
+  setInterval(() => {
+    if (document.body.classList.contains('dark-mode')) {
+      createShootingStar();
+    }
+  }, 4000 + Math.random() * 3000);
+}
+
+createStars();
+randomShootingStars();
+</script>	
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
