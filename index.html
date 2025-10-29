@@ -135,58 +135,6 @@ h1 {
   background-color: #e9e9e9;
 }	    
 
-.accordion.multicolor {
-  background: linear-gradient(90deg, #f44336, #ff9800, #ffeb3b, #4caf50, #2196f3, #9c27b0);
-  color: white;
-  font-weight: bold;
-  border: 1px solid #ccc;
-}
-.accordion.multicolor:hover {
-  filter: brightness(1.1);
-}
-
-.num-circle {
-  display: inline-block;
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  text-align: center;
-  border-radius: 50%;
-  font-weight: 900;
-  color: black;
-  margin-right: 8px;
-  font-size: 16px;
-  background: linear-gradient(135deg, #f44336, #ff9800, #ffeb3b, #4caf50, #2196f3, #9c27b0);
-  box-shadow: 0 0 2px rgba(0,0,0,0.2);
-}
-
-
-
-
-/* Bouton en haut à droite */
-#dark-mode-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #444;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 1000;
-  transition: background 0.3s;
-}
-#dark-mode-toggle:hover {
-  background: #222;
-}
-
-/* Mode nuit */
-body.dark-mode {
-  background: #121212 !important;  /* remplace le dégradé clair */
-}
-
 #close-accordions-button {
   position: fixed;
   top: 20px;
@@ -203,58 +151,6 @@ body.dark-mode {
 #close-accordions-button:hover {
   background: #222;
 }	  
-
-
-.mental-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cartes fixes */
-  gap: 12px;
-  margin-top: 1px;
-}
-
-.mental-card {
-  background: #fff;
-  border: 1px solid #c8d2e4;
-  border-radius: 10px;
-  padding: 6px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-}
-
-.mental-card-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.mental-card small {
-  font-size: 0.75rem;
-  color: #555;
-}
-
-.mental-card a {
-  background: #8dbbe6;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 0.8rem;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.3s;
-}
-
-.mental-card a:hover {
-  background: #6ba5d8;
-}
-
-
-#mental-panel {
-  background: transparent !important;
-border: none;
-}
 
 /* === STYLE CARTES POUR LES SEQUENCES === */
 .sequence-grid {
@@ -338,27 +234,6 @@ border: none;
 }
 .sequence-card2 a:hover { background: #6ba5d8; }	  
 
-/* Mini accordéon pour Compétences / Exemples */
-.mini-accordion {
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
-  padding: 2px 10px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  text-align: left;
-  font-size: 0.9rem;  
-  margin-top: 2px;
-  transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.mini-accordion:hover { background-color: #f5f5f5; }
-.mini-accordion .arrow { float: right; transition: transform 0.3s ease; }
-.mini-accordion.active .arrow { transform: rotate(90deg); }
-
 .mini-panel {
   display: none;
   padding: 8px 10px;
@@ -400,34 +275,6 @@ border: none;
   pointer-events: none;
 }
 .sequence-links a.no-icon::before { display: none; }
-
-/* --------- Liens YouTube --------- */
-.sequence-linksYT a {
-  position: relative;
-  display: block;
-  background: #FFA07A;
-  color: white;
-  padding: 6px 10px 6px 42px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-.sequence-linksYT a:hover { background: #FA8072; }
-.sequence-linksYT a::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 22px;
-  height: 16px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16'%3E%3Crect x='0' y='0' width='24' height='16' rx='3' ry='3' fill='%23FF0000'/%3E%3Cpolygon points='10,4 16,8 10,12' fill='%23FFFFFF'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
 
 /* --------- Liens Exercices --------- */
 .sequence-linksEXE a {
@@ -645,14 +492,6 @@ border: none;
 }
 .sequence-linksCours a.no-icon::before { display: none; }
 
-
-
-
-
-
-
-
-
 .sequence-linksActG { 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -692,10 +531,6 @@ border: none;
 }
 .sequence-linksCours a.no-icon::before { display: none; }
 
-
-
-
-
 .sequence-linksActPA { 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -733,19 +568,6 @@ border: none;
   opacity: 0.95;
   pointer-events: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-	  
-	  
 	  
 .sequence-linksEXG { 
   display: grid;
@@ -786,10 +608,6 @@ border: none;
 }
 .sequence-linksCours a.no-icon::before { display: none; }
 
-
-
-
-
 /* Le conteneur reste le même; on réserve juste de la place à droite */
 .sequence-linksEVAL { position: relative; }
 .sequence-linksEVAL a:first-of-type { padding-right: 130px; }
@@ -827,139 +645,6 @@ border: none;
   content: none !important;
 }	  
 
-
-
-
-
-
-
-
-
-
-
-
-/* === Fond ciel bleu pour le mode jour === */
-body {
-  background: linear-gradient(to bottom, #aee1f9 0%, #ffffff 100%);
-  position: relative;
-}
-
-/* Ciel étoilé (affiché uniquement en mode nuit) */
-body.dark-mode {
-  background: #000;
-  position: relative;
-}
-
-/* Conteneur du ciel étoilé */
-#star-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  display: none; /* caché par défaut */
-}
-
-/* Actif uniquement en mode nuit */
-body.dark-mode #star-background {
-  display: block;
-}
-
-/* Petites étoiles scintillantes */
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: twinkle 2s infinite ease-in-out;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 1; }
-}
-
-/* Étoiles filantes */
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 100px;
-  background: linear-gradient(45deg, white, rgba(255,255,255,0));
-  opacity: 0.7;
-  transform: rotate(45deg);
-  animation: shoot 1.5s linear forwards;
-}
-
-@keyframes shoot {
-  from { transform: translate(0,0) rotate(45deg); opacity: 1; }
-  to { transform: translate(300px,300px) rotate(45deg); opacity: 0; }
-}
-
-
-
-
-
-
-	  
-/* === Nuages version réaliste === */
-.cloud {
-  position: fixed;
-  top: calc(5% + 15vh * var(--i));
-  left: -250px;
-  width: var(--w, 180px);
-  height: var(--h, 80px);
-  background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.9), rgba(255,255,255,0.6) 70%);
-  border-radius: 50%;
-  box-shadow:
-    60px 10px 0 10px rgba(255,255,255,0.7),
-    120px 20px 0 20px rgba(255,255,255,0.6),
-    180px 0px 0 15px rgba(255,255,255,0.5);
-  opacity: 0.9;
-  filter: blur(1px);
-  animation: floatClouds var(--speed, 90s) linear infinite;
-  z-index: -1;
-  display: none; /* visible seulement en mode jour */
-}
-
-body:not(.dark-mode) .cloud {
-  display: block;
-}
-
-/* Animation du déplacement horizontal */
-@keyframes floatClouds {
-  0% {
-    transform: translateX(0) scale(var(--scale, 1));
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(120vw) scale(var(--scale, 1));
-    opacity: 0.8;
-  }
-}
-
-	  
-
-
-.cloud {
-  animation: floatClouds var(--speed, 90s) linear infinite,
-             cloudDrift 6s ease-in-out infinite alternate;
-}
-
-@keyframes cloudDrift {
-  0% { transform: translateY(0) scale(var(--scale, 1)); }
-  100% { transform: translateY(10px) scale(var(--scale, 1)); }
-}
-
-	  
-	  
-
-
 #fifth-grade-button {
   position: fixed;
   top: 20px;
@@ -993,8 +678,6 @@ body:not(.dark-mode) .cloud {
 <a id="fifth-grade-button" 
    href="https://professeurbrahim.github.io/Progression5eme/" 
    target="_blank">5ème</a>    	
-	
-<button id="dark-mode-toggle">🌙 Mode nuit</button>
 	
 <div id="title-container">
   <h1>Mathématiques - Sixième<br><small>Coin Latex</small> <br><small>Monsieur Brahim</small> </h1>
@@ -2598,60 +2281,6 @@ body:not(.dark-mode) .cloud {
   </div>
 </div>
 
-
-<!-- Séquence transversale : Résoudre des problèmes mettant en jeu des nombres inconnus -->
-<button class="accordion white">
-  <a href="https://pix.fr" target="_blank">
-    Ressources annexes : UPE2A
-  </a>
-  <span class="arrow">&#9654;</span>
-</button>
-
-<div class="panel">
-  <div class="sequence-grid">
-
-    <!-- Carte 1 -->
-    <div class="sequence-card">
-      <h3>Evaluations diagnostiques</h3>
-
-      <div class="sequence-links">
-        <a href="UPE2A/Evaluations/Evaluation diagnostique - non verbale.pdf">Non verbale</a>
-        <a href="UPE2A/Evaluations/Evaluation francais.pdf">Francais</a>
-        <a href="UPE2A/Evaluations/Evaluation arabe.pdf">Arabe</a>
-        <a href="UPE2A/Evaluations/Evaluation pachto.pdf">Pachto</a>
-        <a href="UPE2A/Evaluations/Evaluation anglais.pdf">Anglais</a>
-        <a href="UPE2A/Evaluations/Evaluation turc.pdf">Turc</a>
-        <a href="UPE2A/Evaluations/Evaluation albanais.pdf">Albanais</a>
-      </div>
-		
-    </div>
-	  
-
-
-
-	<!-- Carte 2 -->
-    <div class="sequence-card">
-      <h3>Fiches</h3>
-
-      <div class="sequence-links">
-        <a href="UPE2A/Fiches maths UPE2A_6e-5e.pdf">Fiches à l'année 6e-5e</a>
-      </div>
-		
-    </div>
-
-	
-	  
-    <!-- Carte 3 -->
-    <div class="sequence-card">
-      <h3> Jeux </h3>
-
-      <div class="sequence-links">
-        <a href="UPE2A/Fiches maths UPE2A_6e-5e.pdf">Fiches à l'année 6e-5e</a>
-      </div>
-    </div>
-
-  </div>
-    </div>
 	
 </div>
 
@@ -2678,16 +2307,6 @@ body:not(.dark-mode) .cloud {
     link.addEventListener('click', function(event) {
       event.stopPropagation();
     });
-  });
-</script>
-
-<script>
-  const toggleButton = document.getElementById('dark-mode-toggle');
-  toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    toggleButton.textContent = document.body.classList.contains('dark-mode') 
-      ? '☀️ Mode jour' 
-      : '🌙 Mode nuit';
   });
 </script>
 
@@ -2734,62 +2353,6 @@ document.getElementById("close-accordions-button").addEventListener("click", fun
 });
 </script>
 
-
-
-
-
-<!-- ☁️ Nuages du mode jour -->
-<div class="cloud" style="--i:1; --w:160px; --h:70px; --speed:80s; --scale:1;"></div>
-<div class="cloud" style="--i:2; --w:220px; --h:90px; --speed:120s; --scale:1.2;"></div>
-<div class="cloud" style="--i:3; --w:280px; --h:100px; --speed:150s; --scale:1.4;"></div>
-<div class="cloud" style="--i:4; --w:130px; --h:60px; --speed:70s; --scale:0.9;"></div>
-<div class="cloud" style="--i:5; --w:250px; --h:110px; --speed:180s; --scale:1.6;"></div>
-
-
-<!-- 🌌 Ciel étoilé du mode nuit -->
-<div id="star-background">
-  <div id="stars"></div>
-  <div id="shooting-stars"></div>
-</div>
-
-<script>
-function createStars(count = 120) {
-  const starsContainer = document.getElementById('stars');
-  starsContainer.innerHTML = '';
-  for (let i = 0; i < count; i++) {
-    const star = document.createElement('div');
-    star.classList.add('star');
-    const size = Math.random() * 2 + 1;
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
-    star.style.top = `${Math.random() * 100}%`;
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.animationDelay = `${Math.random() * 5}s`;
-    starsContainer.appendChild(star);
-  }
-}
-
-function createShootingStar() {
-  const container = document.getElementById('shooting-stars');
-  const star = document.createElement('div');
-  star.classList.add('shooting-star');
-  star.style.top = `${Math.random() * 50}%`;
-  star.style.left = `${Math.random() * 80}%`;
-  container.appendChild(star);
-  setTimeout(() => star.remove(), 1500);
-}
-
-function randomShootingStars() {
-  setInterval(() => {
-    if (document.body.classList.contains('dark-mode')) {
-      createShootingStar();
-    }
-  }, 4000 + Math.random() * 3000);
-}
-
-createStars();
-randomShootingStars();
-</script>	
     
 </body>
 </html>
