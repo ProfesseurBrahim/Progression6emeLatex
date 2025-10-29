@@ -665,11 +665,23 @@ h1 {
   background: #222;
 }
 
+#matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;          /* reste derrière tout */
+  background: black;
+  pointer-events: none; /* permet de scroller normalement */
+}	  
 	  
   </style>
 	
 </head>
 <body>
+
+<canvas id="matrix-bg"></canvas>	
 	
 <button id="close-accordions-button">▶️ Fermer tout</button>
 
@@ -2352,6 +2364,39 @@ document.getElementById("close-accordions-button").addEventListener("click", fun
 </script>
 
 
+<script>
+const canvas = document.getElementById('matrix-bg');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+const letters = '01';
+const fontSize = 14;
+let columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(1);
+
+function draw() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // fondu doux
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = '#0F0'; // vert Matrix
+  ctx.font = fontSize + 'px monospace';
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+      drops[i] = 0;
+    drops[i]++;
+  }
+}
+setInterval(draw, 50);
+</script>
 
 	
 </body>
