@@ -7,10 +7,12 @@
   <style>
    /* Fond général de la page */
 body {
-  font-family: Arial, sans-serif;
-  margin: 30px;
-  background: linear-gradient(to right, #dbe4f0, #c8d2e4);
-  color: #1a1a1a;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
+  color: #00ff00;
+  background: black;
+  overflow: hidden;
 }
 
 /* Titre */
@@ -2351,7 +2353,47 @@ document.getElementById("close-accordions-button").addEventListener("click", fun
 });
 </script>
 
-    
+<canvas id="matrix"></canvas>
+<script>
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+
+  // plein écran
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+
+  const chars = 'アァカサタナハマヤャラワン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const fontSize = 16;
+  const columns = canvas.width / fontSize;
+  const drops = Array(Math.floor(columns)).fill(1);
+
+  function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#0F0';
+    ctx.font = fontSize + 'px monospace';
+    for (let i = 0; i < drops.length; i++) {
+      const text = chars.charAt(Math.floor(Math.random() * chars.length));
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+        drops[i] = 0;
+      drops[i]++;
+    }
+  }
+
+  setInterval(draw, 33);
+
+  window.addEventListener('resize', () => {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+  });
+</script>
+
+	
+
+	
 </body>
 </html>
 
