@@ -657,6 +657,37 @@ h1 {
   background: black;
   pointer-events: none; /* permet de scroller normalement */
 }	  
+
+
+#open-site-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #4a9bd8;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+
+  /* 🔹 Appliquer directement le style du hover */
+  background: linear-gradient(to bottom right, #74c3fa, #b1e2ff);
+  color: #062b3f;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: none; /* plus d'effet de transition */
+}
+
+/* ❌ Retirer le hover */
+#open-site-button:hover {
+  background: linear-gradient(to bottom right, #74c3fa, #b1e2ff);
+  color: #062b3f;
+  transform: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
 	  
   </style>
 	
@@ -671,7 +702,7 @@ h1 {
   <h1>Coin Latex - Sixième<br><small>Monsieur Brahim</small> </h1>
 </div>
 
-
+<a id="open-site-button" href="https://professeurbrahim.github.io/Progression6eme/">🌤️ Retour</a>
 
 
 
